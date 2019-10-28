@@ -243,6 +243,13 @@ cdef extern from "imgui.h":
         void ChannelsMerge() except + # ✓
         void ChannelsSetCurrent(int idx) except + # ✓
 
+        void  AddCircle(
+                   const ImVec2&,
+                   float,
+                   ImU32,
+                   # note:optional
+                   int,
+                   float) except +  # ✓
 
         void AddCircleFilled(
                    const ImVec2&,

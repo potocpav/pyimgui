@@ -27,7 +27,7 @@ clean:
 
 .PHONY: build
 build: bootstrap
-	_CYTHONIZE_WITH_COVERAGE=1 python -m pip install -e . -v
+	_CYTHONIZE_WITH_COVERAGE=1 python -m pip install -e . -v --user
 	python ci/completion.py -o README.md with-pxd imgui/cimgui.pxd
 
 

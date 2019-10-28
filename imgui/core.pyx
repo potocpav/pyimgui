@@ -429,6 +429,43 @@ cdef class _DrawList(object):
             rounding_corners_flags,
         )
 
+
+    def add_circle(self,
+        float centre_x, float centre_y,
+        float radius,
+        cimgui.ImU32 col,
+        # note: optional
+        int num_segments=12,
+        float thickness=1.0):
+
+        """AddCircleFilled() primitive for ImDrawList()
+
+    Args:
+        centre_x (float): circle centre coordinates
+        centre_y (float): circle centre coordinates
+        radius (float): circle radius
+        col (ImU32): RGBA color specification
+        # note: optional
+        num_segments (ImU32): Number of segments, defaults to 12
+        thickness (float): Line thickness
+
+    .. wraps::
+        void AddCircle(
+                    const ImVec2& centre,
+                    float radius,
+                    ImU32 col,
+                    # note: optional
+                    int num_segments = 12,
+                    float thickness = 1.0);
+    """
+        self._ptr.AddCircle(
+            _cast_args_ImVec2(centre_x, centre_y),
+            radius,
+            col,
+            num_segments,
+            thickness
+        )
+
     def add_circle_filled(self,
         float centre_x, float centre_y,
         float radius,
