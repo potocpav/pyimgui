@@ -630,6 +630,36 @@ cdef class _DrawList(object):
         )
 
 
+    def add_text(
+            self,
+            float pos_x, float pos_y,
+            cimgui.ImU32 col,
+            str text
+        ):
+        """Add text to the draw list.
+
+        Args:
+            pos_x (float): X coordinate of the text's upper-left corner
+            pos_y (float): Y coordinate of the text's upper-left corner
+            col (ImU32): RGBA color specification
+            text (str): text
+
+        .. wraps::
+            void AddText(
+                const ImVec2& pos,
+                ImU32 col,
+                const char* text_begin,
+                const char* text_end = NULL
+            )
+        """
+        self._ptr.AddText(
+            _cast_args_ImVec2(pos_x, pos_y),
+            col,
+            _bytes(text),
+            NULL
+        )
+
+
 
     # channels
 
