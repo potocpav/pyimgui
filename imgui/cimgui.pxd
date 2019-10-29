@@ -209,6 +209,15 @@ cdef extern from "imgui.h":
         ImVector[ImDrawVert] VtxBuffer  # ✓
 
 
+        void AddPolyline(
+            const ImVec2* points,
+            int num_points,
+            ImU32 col,
+            bool closed,
+            float thickness
+        ) except +  # ✓
+
+
         void AddLine(
             const ImVec2& a,
             const ImVec2& b,

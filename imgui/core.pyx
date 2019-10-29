@@ -429,6 +429,42 @@ cdef class _DrawList(object):
             rounding_corners_flags,
         )
 
+    def add_polyline(
+            self,
+            list points,
+            cimgui.ImU32 col,
+            bool closed=False,
+            float thickness=1.0
+        ):
+        """Add a filled rectangle to the draw list.
+        Args:
+            points (list): List of points
+            col (float): RGBA color specification
+            closed (bool): close the polyline to form a polygon
+            thickness (float): Line thickness
+
+        .. wraps::
+            void ImDrawList::AddPolyline(
+                const ImVec2* points,
+                int num_points,
+                ImU32 col,
+                bool closed,
+                float thickness
+            )
+        """
+        num_points = len(points)
+        cdef cimgui.ImVec2 *pts
+        pts = <cimgui.ImVec2 *>malloc(num_points * cython.sizeof(cimgui.ImVec2))
+        for i in range(num_points):
+            pts[i] = _cast_args_ImVec2(points[i][0], points[i][1])
+        self._ptr.AddPolyline(
+            pts,
+            num_points,
+            col,
+            closed,
+            thickness
+        )
+        free(pts)
 
     def add_circle(self,
         float centre_x, float centre_y,
@@ -564,28 +600,6 @@ cdef class _DrawList(object):
             _cast_tuple_ImVec2(uv_b),
             col
         )
-
-    def add_line(
-            self,
-            float start_x, float start_y,
-            float end_x, float end_y,
-            cimgui.ImU32 col,
-            # note: optional
-            float thickness=1.0,
-        ):
-        """Add a straight line to the draw list.
-
-        .. wraps::
-            void ImDrawList::AddLine(const ImVec2& a, const ImVec2& b, ImU32 col, float thickness = 1.0f)
-
-        """
-        self._ptr.AddLine(
-            _cast_args_ImVec2(start_x, start_y),
-            _cast_args_ImVec2(end_x, end_y),
-            col,
-            thickness,
-        )
-
 
     def add_rect(
             self,
