@@ -15,9 +15,6 @@ imgui.ini
 
 # Cython related
 cython_debug/
-imgui/*.cpp
-imgui/*.h
-imgui/*.c
 
 # Distribution / packaging
 .Python

@@ -143,7 +143,6 @@ setup(
         compiler_directives=compiler_directives, **cythonize_opts
     ),
     extras_require=EXTRAS_REQUIRE,
-    install_requires=['Cython>=0.24,<=0.28.2'], # Needed because the lack of binary distribution for this fork - need to be able to build from source.
     include_package_data=True,
 
     license='BSD',

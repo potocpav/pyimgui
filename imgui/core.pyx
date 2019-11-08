@@ -6987,15 +6987,6 @@ def get_frame_height_with_spacing():
     return cimgui.GetFrameHeightWithSpacing()
 
 
-def pop_id():
-    """ Pop identifier from the ID stack
-
-    .. wraps::
-        void PopID()
-    """
-    cimgui.PopID()
-
-
 def create_context(_FontAtlas shared_font_atlas = None):
     """CreateContext
 
