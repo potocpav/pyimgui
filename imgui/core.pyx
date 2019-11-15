@@ -404,7 +404,7 @@ cdef class _DrawList(object):
         Args:
             upper_left_x (float): X coordinate of top-left
             upper_left_y (float): Y coordinate of top-left
-            lower_right_x (float): X coordinate of lower-right
+            lower_right_x (float): X cordinate of lower-right
             lower_right_y (float): Y coordinate of lower-right
             col (ImU32): RGBA color specification
             # note: optional
@@ -431,14 +431,14 @@ cdef class _DrawList(object):
 
     def add_polyline(
             self,
-            list points,
+            object points,
             cimgui.ImU32 col,
             bool closed=False,
             float thickness=1.0
         ):
         """Add a filled rectangle to the draw list.
         Args:
-            points (list): List of points
+            points (object): List of points. Either a list of lists, or a numpy array
             col (float): RGBA color specification
             closed (bool): close the polyline to form a polygon
             thickness (float): Line thickness
@@ -452,11 +452,22 @@ cdef class _DrawList(object):
                 float thickness
             )
         """
-        num_points = len(points)
         cdef cimgui.ImVec2 *pts
-        pts = <cimgui.ImVec2 *>malloc(num_points * cython.sizeof(cimgui.ImVec2))
-        for i in range(num_points):
-            pts[i] = _cast_args_ImVec2(points[i][0], points[i][1])
+        cdef float [:, :] view
+        num_points = len(points)
+
+        if isinstance(points, list):
+            pts = <cimgui.ImVec2 *>malloc(num_points * cython.sizeof(cimgui.ImVec2))
+            for i in range(num_points):
+                pts[i] = _cast_args_ImVec2(points[i][0], points[i][1])
+        else:
+            import numpy as np
+            assert points.shape == (num_points, 2)
+            if isinstance(points, np.ndarray):
+                view = np.ascontiguousarray(points.astype(np.float32))
+                pts = <cimgui.ImVec2 *>&view[0,0]
+            else:
+                raise ValueError("points must be a list or a numpy array.")
         self._ptr.AddPolyline(
             pts,
             num_points,
@@ -464,7 +475,8 @@ cdef class _DrawList(object):
             closed,
             thickness
         )
-        free(pts)
+        if isinstance(points, list):
+            free(pts)
 
     def add_circle(self,
         float centre_x, float centre_y,
