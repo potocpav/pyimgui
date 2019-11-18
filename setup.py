@@ -73,19 +73,13 @@ else:
 
 def extension_sources(path):
     sources = ["{0}{1}".format(path, '.pyx' if USE_CYTHON else '.cpp')]
-
-    if not USE_CYTHON:
-        # note: Cython will pick these files automatically but when building
-        #       a plain C++ sdist without Cython we need to explicitly mark
-        #       these files for compilation and linking.
-        sources += [
-            'imgui-cpp/imgui.cpp',
-            'imgui-cpp/imgui_draw.cpp',
-            'imgui-cpp/imgui_demo.cpp',
-            'imgui-cpp/imgui_widgets.cpp',
-            'config-cpp/py_imconfig.cpp'
-        ]
-
+    sources += [
+        'imgui-cpp/imgui.cpp',
+        'imgui-cpp/imgui_draw.cpp',
+        'imgui-cpp/imgui_demo.cpp',
+        'imgui-cpp/imgui_widgets.cpp',
+        'config-cpp/py_imconfig.cpp'
+    ]
     return sources
 
 

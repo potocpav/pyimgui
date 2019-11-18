@@ -1,6 +1,4 @@
 # distutils: language = c++
-# distutils: sources = imgui-cpp/imgui.cpp imgui-cpp/imgui_draw.cpp imgui-cpp/imgui_demo.cpp imgui-cpp/imgui_widgets.cpp config-cpp/py_imconfig.cpp
-# distutils: include_dirs = imgui-cpp
 # cython: embedsignature=True
 """
 

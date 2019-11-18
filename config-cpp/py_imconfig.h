@@ -35,3 +35,5 @@ typedef signed __int64       int64_t;
 
 
 void __py_assert(const char* msg);
+
+#define ImDrawIdx unsigned int
