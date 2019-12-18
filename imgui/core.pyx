@@ -41,6 +41,10 @@ ONCE = enums.ImGuiCond_Once
 FIRST_USE_EVER = enums.ImGuiCond_FirstUseEver
 APPEARING = enums.ImGuiCond_Appearing
 
+# ==== Config flags enum redefines ====
+CONFIG_DOCKING_ENABLE = enums.ImGuiConfigFlags_DockingEnable
+CONFIG_VIEWPORTS_ENABLE = enums.ImGuiConfigFlags_ViewportsEnable
+
 # ==== Style var enum redefines ====
 STYLE_ALPHA = enums.ImGuiStyleVar_Alpha # float
 STYLE_WINDOW_PADDING = enums.ImGuiStyleVar_WindowPadding  # Vec2
@@ -1351,6 +1355,14 @@ cdef class _IO(object):
 
     # ... maping of input properties ...
     @property
+    def config_flags(self):
+        return self._ptr.ConfigFlags
+
+    @config_flags.setter
+    def config_flags(self, value):
+        self._ptr.ConfigFlags = value
+
+    @property
     def display_size(self):
         return _cast_ImVec2_tuple(self._ptr.DisplaySize)
 
@@ -1462,22 +1474,6 @@ cdef class _IO(object):
         self._ptr.DisplayFramebufferScale = _cast_tuple_ImVec2(value)
 
     @property
-    def display_visible_min(self):
-        return _cast_ImVec2_tuple(self._ptr.DisplayVisibleMin)
-
-    @display_visible_min.setter
-    def display_visible_min(self,  value):
-        self._ptr.DisplayVisibleMin = _cast_tuple_ImVec2(value)
-
-    @property
-    def display_visible_max(self):
-        return _cast_ImVec2_tuple(self._ptr.DisplayVisibleMax)
-
-    @display_visible_max.setter
-    def display_visible_max(self,  value):
-        self._ptr.DisplayVisibleMax = _cast_tuple_ImVec2(value)
-
-    @property
     def config_mac_osx_behaviors(self):
         return self._ptr.ConfigMacOSXBehaviors
 
@@ -1495,11 +1491,11 @@ cdef class _IO(object):
 
     @property
     def config_resize_windows_from_edges(self):
-        return self._ptr.ConfigResizeWindowsFromEdges
+        return self._ptr.ConfigWindowsResizeFromEdges
 
     @config_resize_windows_from_edges.setter
     def config_resize_windows_from_edges(self, cimgui.bool value):
-        self._ptr.ConfigResizeWindowsFromEdges = value
+        self._ptr.ConfigWindowsResizeFromEdges = value
 
     @property
     def mouse_pos(self):
@@ -1979,9 +1975,11 @@ def begin_child(
     """
     # note: we do not take advantage of C++ function overloading
     #       in order to take adventage of Python keyword arguments
-    return cimgui.BeginChild(
-        _bytes(label), _cast_args_ImVec2(width, height), border, flags
-    )
+    if isinstance(label, str):
+        return cimgui.BeginChild(_bytes(label), _cast_args_ImVec2(width, height), border, flags)
+    else:
+        return cimgui.BeginChild(label, _cast_args_ImVec2(width, height), border, flags)
+
 
 def end_child():
     """End scrolling region.
@@ -6336,6 +6334,13 @@ cpdef pop_id():
     """
 
     cimgui.PopID()
+
+cpdef get_id(str widget_id):
+    """Get a full ID, including the ID stack.
+    .. wraps::
+        str GetID()
+    """
+    return cimgui.GetID(_bytes(widget_id))
 
 
 cpdef get_font_size():

@@ -9,6 +9,18 @@ Builds:
 * [![Build Status](https://travis-ci.org/swistakm/pyimgui.svg?branch=master)](https://travis-ci.org/swistakm/pyimgui) (OS X & Linux)
 
 
+This is a fork of https://github.com/swistakm/pyimgui, which contains the following improvements over upstream:
+
+* Newer version of ImGui, the docking branch is used. This is needed to get some `PushID` fixes.
+* Optimized `polyline` rendering using NumPy
+* `is_key_pressed` function
+* `ImDrawIdx` is configured as `unsigned int`, enabling bigger draw lists.
+
+These are needed for https://github.com/potocpav/python-concur.
+
+It does not, however, provide pre-built packages, nor documentation on https://readthedocs.org/, and the code is not as well-commented.
+It is advisable to use the upstream package for any work that does not require Concur.
+
 # pyimgui
 
 Python bindings for the amazing

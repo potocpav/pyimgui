@@ -51,6 +51,15 @@ cdef extern from "imgui.h":
         ImGuiConfigFlags_NoMouse
         ImGuiConfigFlags_NoMouseCursorChange
 
+        # [BETA] Docking
+        ImGuiConfigFlags_DockingEnable
+
+        # [BETA] Viewports
+        # When using viewports it is recommended that your default value for ImGuiCol_WindowBg is opaque (Alpha=1.0) so transition to a viewport won't be noticeable.
+        ImGuiConfigFlags_ViewportsEnable
+        ImGuiConfigFlags_DpiEnableScaleViewports
+        ImGuiConfigFlags_DpiEnableScaleFonts
+
         # User storage (to allow your back-end/engine to communicate to code that may be sh
         ImGuiConfigFlags_IsSRGB
         ImGuiConfigFlags_IsTouchScreen
@@ -122,11 +131,11 @@ cdef extern from "imgui.h":
         ImGuiStyleVar_Alpha                  # float
         ImGuiStyleVar_WindowPadding          # ImVec2
         ImGuiStyleVar_WindowRounding         # float
-        ImGuiStyleVar_WindowBorderSize       # float 
+        ImGuiStyleVar_WindowBorderSize       # float
         ImGuiStyleVar_WindowMinSize          # ImVec2
         ImGuiStyleVar_WindowTitleAlign       # ImVec2
-        ImGuiStyleVar_ChildRounding          # float 
-        ImGuiStyleVar_ChildBorderSize        # float 
+        ImGuiStyleVar_ChildRounding          # float
+        ImGuiStyleVar_ChildBorderSize        # float
         ImGuiStyleVar_PopupRounding          # float
         ImGuiStyleVar_PopupBorderSize        # float
         ImGuiStyleVar_FramePadding           # ImVec2
@@ -175,7 +184,7 @@ cdef extern from "imgui.h":
         ImGuiWindowFlags_AlwaysUseWindowPadding     # Ensure child windows without border uses style.WindowPadding (ignored by default for non-bordered child windows, because more convenient)
         ImGuiWindowFlags_NoNavInputs                # No gamepad/keyboard navigation within the window
         ImGuiWindowFlags_NoNavFocus                 # No focusing toward this window with gamepad/keyboard navigation (e.g. skipped by CTRL+TAB)
-        ImGuiWindowFlags_NoNav = ImGuiWindowFlags_NoNavInputs | ImGuiWindowFlags_NoNavFocus 
+        ImGuiWindowFlags_NoNav = ImGuiWindowFlags_NoNavInputs | ImGuiWindowFlags_NoNavFocus
 
     ctypedef enum ImGuiColorEditFlags_:
         ImGuiColorEditFlags_NoAlpha

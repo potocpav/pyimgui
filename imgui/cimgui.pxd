@@ -82,7 +82,7 @@ cdef extern from "imgui.h":
     ctypedef struct ImGuiIO:
         # ====
         # source-note: Settings (fill once)
-        ImGuiConfigFlags   ConfigFlags # ✗
+        ImGuiConfigFlags   ConfigFlags # ✓
         ImGuiBackendFlags  BackendFlags # ✗
         ImVec2        DisplaySize # ✓
         float         DeltaTime  # ✓
@@ -103,11 +103,9 @@ cdef extern from "imgui.h":
         float         FontGlobalScale  # ✓
         bool          FontAllowUserScaling  # ✓
         ImVec2        DisplayFramebufferScale  # ✓
-        ImVec2        DisplayVisibleMin  # ✓
-        ImVec2        DisplayVisibleMax  # ✓
         bool          ConfigMacOSXBehaviors  # ✓
         bool          ConfigInputTextCursorBlink  # ✓
-        bool          ConfigResizeWindowsFromEdges  # ✓
+        bool          ConfigWindowsResizeFromEdges  # ✓
 
         # ====
         # source-note: User Functions
@@ -594,7 +592,7 @@ cdef extern from "imgui.h" namespace "ImGui":
     void PushID(const void* ptr_id) except +  # ✓
     void PushID(int int_id) except +  # ✗
     void PopID() except +  # ✓
-    ImGuiID GetID(const char* str_id) except +  # ✗
+    ImGuiID GetID(const char* str_id) except +  # ✓
     ImGuiID GetID(const char* str_id_begin, const char* str_id_end) except +  # ✗
     ImGuiID GetID(const void* ptr_id) except +  # ✗
 
