@@ -119,7 +119,7 @@ EXTENSIONS = [
 
 
 setup(
-    name='imgui',
+    name='concur_imgui',
     version=VERSION,
     packages=find_packages('.'),
 
@@ -130,7 +130,7 @@ setup(
     long_description=read(README),
     long_description_content_type="text/markdown",
 
-    url="https://github.com/swistakm/pyimgui",
+    url="https://github.com/potocpav/pyimgui",
 
     ext_modules=cythonize(
         EXTENSIONS,
