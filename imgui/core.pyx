@@ -111,6 +111,7 @@ WINDOW_ALWAYS_USE_WINDOW_PADDING = enums.ImGuiWindowFlags_AlwaysUseWindowPadding
 WINDOW_NO_NAV_INPUTS = enums.ImGuiWindowFlags_NoNavInputs
 WINDOW_NO_NAV_FOCUS = enums.ImGuiWindowFlags_NoNavFocus
 WINDOW_NO_NAV = enums.ImGuiWindowFlags_NoNav
+WINDOW_NO_DOCKING = enums.ImGuiWindowFlags_NoDocking
 
 # ==== TreeNode flags enum redefines ====
 TREE_NODE_SELECTED = enums.ImGuiTreeNodeFlags_Selected
@@ -1857,6 +1858,21 @@ def show_font_selector(str label):
     cimgui.ShowStyleSelector(label)
 
 
+ctypedef fused child_id:
+    str
+    cimgui.ImGuiID
+
+
+def dock_space(child_id label, float x, float y, cimgui.ImGuiDockNodeFlags flags=0):
+    """Begin a DockSpace.
+    """
+    # void DockSpace(ImGuiID, const ImVec2&, ImGuiDockNodeFlags, void*) except + # ✓
+    if isinstance(label, str):
+        return cimgui.DockSpace(cimgui.GetID(_bytes(label)), _cast_args_ImVec2(x, y), flags, NULL)
+    else:
+        return cimgui.DockSpace(label, _cast_args_ImVec2(x, y), flags, NULL)
+
+
 def begin(str label, closable=False, cimgui.ImGuiWindowFlags flags=0):
     """Begin a window.
 
@@ -1915,11 +1931,6 @@ def end():
         void End()
     """
     cimgui.End()
-
-
-ctypedef fused child_id:
-    str
-    cimgui.ImGuiID
 
 
 def begin_child(

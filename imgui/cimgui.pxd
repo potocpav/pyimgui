@@ -65,6 +65,7 @@ cdef extern from "imgui.h":
     ctypedef int ImGuiSelectableFlags
     ctypedef int ImGuiTreeNodeFlags
     ctypedef int ImGuiWindowFlags
+    ctypedef int ImGuiDockNodeFlags
     ctypedef int (*ImGuiInputTextCallback)(ImGuiInputTextCallbackData *data);
     ctypedef void (*ImGuiSizeCallback)(ImGuiSizeCallbackData* data);
 
@@ -410,6 +411,10 @@ cdef extern from "imgui.h" namespace "ImGui":
     void SetItemDefaultFocus() except +  # ✓
     void SetKeyboardFocusHere(int offset) except +  # ✓
 
+
+    # ====
+    # Docking
+    void DockSpace(ImGuiID, const ImVec2&, ImGuiDockNodeFlags, void*) except + # ✓
 
     # ====
     # Window

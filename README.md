@@ -12,6 +12,7 @@ Builds:
 This is a fork of https://github.com/swistakm/pyimgui, which contains the following improvements over upstream:
 
 * Newer version of ImGui, the docking branch is used. This is needed to get some `PushID` fixes.
+* `DockSpace` and some auxilliary methods and enum values
 * Optimized `polyline` rendering using NumPy
 * `is_key_pressed` function
 * `ImDrawIdx` is configured as `unsigned int`, enabling bigger draw lists.

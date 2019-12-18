@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-VERSION = (1, 2, 0)  # PEP 386
+VERSION = (1, 2, 1)  # PEP 386
 __version__ = ".".join([str(x) for x in VERSION])
 
 from imgui.core import *  # noqa
@@ -160,6 +160,8 @@ WINDOW_NO_NAV_INPUTS = core.WINDOW_NO_NAV_INPUTS
 WINDOW_NO_NAV_FOCUS = core.WINDOW_NO_NAV_FOCUS
 # Shortcut: ``imgui.WINDOW_NO_NAV_INPUTS | imgui.WINDOW_NO_NAV_FOCUS``.
 WINDOW_NO_NAV = core.WINDOW_NO_NAV
+# No docking inside the window
+WINDOW_NO_DOCKING = core.WINDOW_NO_DOCKING
 
 # === Tree node flag constants (redefines for autodoc)
 #: Draw as selected
