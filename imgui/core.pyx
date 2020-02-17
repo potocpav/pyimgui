@@ -439,7 +439,7 @@ cdef class _DrawList(object):
             bool closed=False,
             float thickness=1.0
         ):
-        """Add a filled rectangle to the draw list.
+        """Add a polyline to a draw list.
         Args:
             points (object): List of points. Either a list of lists, or a numpy array
             col (float): RGBA color specification
@@ -477,9 +477,52 @@ cdef class _DrawList(object):
             col,
             closed,
             thickness
-        )
+            )
         if isinstance(points, list):
             free(pts)
+
+    def add_polylines(
+            self,
+            object points,
+            cimgui.ImU32 col,
+            bool closed=False,
+            float thickness=1.0
+        ):
+        """Add multiple same-length same-param polylines to the draw list. Faster than
+        calling `add_polyline` repeatedly.
+
+        Args:
+            points (object): NumPy array specifying polylines. Shape: (n_polys, n_pts_per_poly, 2)
+            col (float): RGBA color specification
+            closed (bool): close the polyline to form a polygon
+            thickness (float): Line thickness
+
+        .. wraps::
+            void ImDrawList::AddPolyline(
+                const ImVec2* points,
+                int num_points,
+                ImU32 col,
+                bool closed,
+                float thickness
+            )
+        """
+        cdef cimgui.ImVec2 *pts
+        cdef float [:, :, :] view
+
+        import numpy as np
+        assert len(points.shape) == 3 and points.shape[2] == 2
+        view = np.ascontiguousarray(points.astype(np.float32))
+        num_polylines = len(points)
+        num_points = points.shape[1]
+        for i in range(points.shape[0]):
+            pts = <cimgui.ImVec2 *>&view[i,0,0]
+            self._ptr.AddPolyline(
+                pts,
+                view.shape[1],
+                col,
+                closed,
+                thickness
+                )
 
     def add_circle(self,
         float centre_x, float centre_y,
