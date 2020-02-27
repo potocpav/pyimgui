@@ -357,6 +357,29 @@ cdef class _DrawCmd(object):
         return self._ptr.ElemCount
 
 
+cdef cimgui.ImVec2* prepare_polyline_pts(object points) except NULL:
+    """Utility function which returns a memory pointer representing the data of points.
+    If `isinstance(points, list)`, the returned memory must be freed by the caller.
+    """
+    cdef cimgui.ImVec2* pts
+    cdef float [:, :] view
+    num_points = len(points)
+
+    if isinstance(points, list):
+        pts = <cimgui.ImVec2 *>malloc(num_points * cython.sizeof(cimgui.ImVec2))
+        for i in range(num_points):
+            pts[i] = _cast_args_ImVec2(points[i][0], points[i][1])
+    else:
+        import numpy as np
+        assert points.shape == (num_points, 2)
+        if isinstance(points, np.ndarray):
+            view = np.ascontiguousarray(points.astype(np.float32))
+            pts = <cimgui.ImVec2 *>&view[0,0]
+        else:
+            raise ValueError("points must be a list or a numpy array.")
+    return pts
+
+
 cdef class _DrawList(object):
     cdef cimgui.ImDrawList* _ptr
 
@@ -455,29 +478,32 @@ cdef class _DrawList(object):
                 float thickness
             )
         """
-        cdef cimgui.ImVec2 *pts
-        cdef float [:, :] view
-        num_points = len(points)
-
+        cdef cimgui.ImVec2 *pts = prepare_polyline_pts(points)
+        self._ptr.AddPolyline(pts, len(points), col, closed, thickness)
         if isinstance(points, list):
-            pts = <cimgui.ImVec2 *>malloc(num_points * cython.sizeof(cimgui.ImVec2))
-            for i in range(num_points):
-                pts[i] = _cast_args_ImVec2(points[i][0], points[i][1])
-        else:
-            import numpy as np
-            assert points.shape == (num_points, 2)
-            if isinstance(points, np.ndarray):
-                view = np.ascontiguousarray(points.astype(np.float32))
-                pts = <cimgui.ImVec2 *>&view[0,0]
-            else:
-                raise ValueError("points must be a list or a numpy array.")
-        self._ptr.AddPolyline(
-            pts,
-            num_points,
-            col,
-            closed,
-            thickness
+            free(pts)
+
+    def add_convex_poly_filled(
+            self,
+            object points,
+            cimgui.ImU32 col
+        ):
+        """Add a filled convex polygon to a draw list. Points must be in clockwise order
+        for correct anti-aliasing.
+
+        Args:
+            points (object): List of points. Either a list of lists, or a numpy array
+            col (float): RGBA color specification
+
+        .. wraps::
+            void ImDrawList::AddConvexPolyFilled(
+                const ImVec2* points,
+                int points_count,
+                ImU32 col
             )
+        """
+        cdef cimgui.ImVec2 *pts = prepare_polyline_pts(points)
+        self._ptr.AddConvexPolyFilled(pts, len(points), col)
         if isinstance(points, list):
             free(pts)
 
@@ -496,33 +522,42 @@ cdef class _DrawList(object):
             col (float): RGBA color specification
             closed (bool): close the polyline to form a polygon
             thickness (float): Line thickness
-
-        .. wraps::
-            void ImDrawList::AddPolyline(
-                const ImVec2* points,
-                int num_points,
-                ImU32 col,
-                bool closed,
-                float thickness
-            )
         """
+        import numpy as np
+
         cdef cimgui.ImVec2 *pts
         cdef float [:, :, :] view
-
-        import numpy as np
         assert len(points.shape) == 3 and points.shape[2] == 2
         view = np.ascontiguousarray(points.astype(np.float32))
-        num_polylines = len(points)
-        num_points = points.shape[1]
+        cdef int i
         for i in range(points.shape[0]):
             pts = <cimgui.ImVec2 *>&view[i,0,0]
-            self._ptr.AddPolyline(
-                pts,
-                view.shape[1],
-                col,
-                closed,
-                thickness
-                )
+            self._ptr.AddPolyline(pts, view.shape[1], col, closed, thickness)
+
+    def add_convex_polys_filled(
+            self,
+            object points,
+            cimgui.ImU32 col,
+            bool closed=False,
+            float thickness=1.0
+        ):
+        """Add multiple same-length same-param convex filled polygons to the draw list. Faster than
+        calling `add_convex_poly_filled` repeatedly.
+
+        Args:
+            points (object): NumPy array specifying polygons. Shape: (n_polys, n_pts_per_poly, 2)
+            col (float): RGBA color specification
+        """
+        import numpy as np
+
+        cdef cimgui.ImVec2 *pts
+        cdef float [:, :, :] view
+        assert len(points.shape) == 3 and points.shape[2] == 2
+        view = np.ascontiguousarray(points.astype(np.float32))
+        cdef int i
+        for i in range(points.shape[0]):
+            pts = <cimgui.ImVec2 *>&view[i,0,0]
+            self._ptr.AddConvexPolyFilled(pts, view.shape[1], col)
 
     def add_circle(self,
         float centre_x, float centre_y,

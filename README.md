@@ -16,6 +16,8 @@ This is a fork of https://github.com/swistakm/pyimgui, which contains the follow
 * Optimized `polyline` rendering using NumPy
 * `is_key_pressed` function
 * `ImDrawIdx` is configured as `unsigned int`, enabling bigger draw lists.
+* `AddConvexPolyFilled` function
+* Batch draw multiple polylines and filled polygons using NumPy arrays
 
 These are needed for https://github.com/potocpav/python-concur.
 

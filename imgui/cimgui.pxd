@@ -217,6 +217,13 @@ cdef extern from "imgui.h":
         ) except +  # ✓
 
 
+        void AddConvexPolyFilled(
+            const ImVec2* points,
+            int num_points,
+            ImU32 col
+        ) except +  # ✓
+
+
         void AddLine(
             const ImVec2& a,
             const ImVec2& b,
