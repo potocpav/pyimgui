@@ -357,29 +357,6 @@ cdef class _DrawCmd(object):
         return self._ptr.ElemCount
 
 
-cdef cimgui.ImVec2* prepare_polyline_pts(object points) except NULL:
-    """Utility function which returns a memory pointer representing the data of points.
-    If `isinstance(points, list)`, the returned memory must be freed by the caller.
-    """
-    cdef cimgui.ImVec2* pts
-    cdef float [:, :] view
-    num_points = len(points)
-
-    if isinstance(points, list):
-        pts = <cimgui.ImVec2 *>malloc(num_points * cython.sizeof(cimgui.ImVec2))
-        for i in range(num_points):
-            pts[i] = _cast_args_ImVec2(points[i][0], points[i][1])
-    else:
-        import numpy as np
-        assert points.shape == (num_points, 2)
-        if isinstance(points, np.ndarray):
-            view = np.ascontiguousarray(points.astype(np.float32))
-            pts = <cimgui.ImVec2 *>&view[0,0]
-        else:
-            raise ValueError("points must be a list or a numpy array.")
-    return pts
-
-
 cdef class _DrawList(object):
     cdef cimgui.ImDrawList* _ptr
 
@@ -464,7 +441,7 @@ cdef class _DrawList(object):
         ):
         """Add a polyline to a draw list.
         Args:
-            points (object): List of points. Either a list of lists, or a numpy array
+            points (object): NumPy array of points. Shape: (n_pts, 2)
             col (float): RGBA color specification
             closed (bool): close the polyline to form a polygon
             thickness (float): Line thickness
@@ -478,10 +455,17 @@ cdef class _DrawList(object):
                 float thickness
             )
         """
-        cdef cimgui.ImVec2 *pts = prepare_polyline_pts(points)
-        self._ptr.AddPolyline(pts, len(points), col, closed, thickness)
-        if isinstance(points, list):
-            free(pts)
+        cdef float [:, :] view
+
+        import numpy as np
+        if not isinstance(points, np.ndarray):
+            raise ValueError("points must be a NumPy array.")
+        assert points.shape == (len(points), 2), "`points` must have shape (n_pts, 2)"
+        if len(points) == 0:
+            return
+
+        view = np.ascontiguousarray(points.astype(np.float32))
+        self._ptr.AddPolyline(<cimgui.ImVec2 *>&view[0,0], len(points), col, closed, thickness)
 
     def add_convex_poly_filled(
             self,
@@ -492,7 +476,7 @@ cdef class _DrawList(object):
         for correct anti-aliasing.
 
         Args:
-            points (object): List of points. Either a list of lists, or a numpy array
+            points (object): NumPy array of points. Shape: (n_pts, 2)
             col (float): RGBA color specification
 
         .. wraps::
@@ -502,10 +486,17 @@ cdef class _DrawList(object):
                 ImU32 col
             )
         """
-        cdef cimgui.ImVec2 *pts = prepare_polyline_pts(points)
-        self._ptr.AddConvexPolyFilled(pts, len(points), col)
-        if isinstance(points, list):
-            free(pts)
+        cdef float [:, :] view
+
+        import numpy as np
+        if not isinstance(points, np.ndarray):
+            raise ValueError("points must be a NumPy array.")
+        assert points.shape == (len(points), 2), "`points` must have shape (n_pts, 2)"
+        if len(points) == 0:
+            return
+
+        view = np.ascontiguousarray(points.astype(np.float32))
+        self._ptr.AddConvexPolyFilled(<cimgui.ImVec2 *>&view[0,0], len(points), col)
 
     def add_polylines(
             self,
@@ -527,7 +518,10 @@ cdef class _DrawList(object):
 
         cdef cimgui.ImVec2 *pts
         cdef float [:, :, :] view
-        assert len(points.shape) == 3 and points.shape[2] == 2
+        assert len(points.shape) == 3 and points.shape[2] == 2, "`points` must have shape (n_polys, n_pts_per_poly, 2)"
+        if points.shape[0] == 0 or points.shape[1] == 0:
+            return
+
         view = np.ascontiguousarray(points.astype(np.float32))
         cdef int i
         for i in range(points.shape[0]):
@@ -552,7 +546,10 @@ cdef class _DrawList(object):
 
         cdef cimgui.ImVec2 *pts
         cdef float [:, :, :] view
-        assert len(points.shape) == 3 and points.shape[2] == 2
+        assert len(points.shape) == 3 and points.shape[2] == 2, "`points` must have shape (n_polys, n_pts_per_poly, 2)"
+        if points.shape[0] == 0 or points.shape[1] == 0:
+            return
+
         view = np.ascontiguousarray(points.astype(np.float32))
         cdef int i
         for i in range(points.shape[0]):
