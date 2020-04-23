@@ -18,10 +18,12 @@ This is a fork of https://github.com/swistakm/pyimgui, which contains the follow
 * `ImDrawIdx` is configured as `unsigned int`, enabling bigger draw lists.
 * `AddConvexPolyFilled` function
 * Batch draw multiple polylines and filled polygons using NumPy arrays
+* System clipboard integration in the GLFW integration layer
 
 These are needed for https://github.com/potocpav/python-concur.
 
-It does not, however, provide pre-built packages, nor documentation on https://readthedocs.org/, and the code is not as well-commented.
+This fork does not, however, provide pre-built packages, nor documentation on https://readthedocs.org/.
+Code quality & documentation standards are not as high as upstream.
 It is advisable to use the upstream package for any work that does not require Concur.
 
 # pyimgui
