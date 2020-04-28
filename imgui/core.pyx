@@ -1467,6 +1467,14 @@ cdef class _IO(object):
         self._ptr.DeltaTime = time
 
     @property
+    def ini_filename(self):
+        return self._ptr.IniFilename
+
+    @ini_filename.setter
+    def ini_filename(self, char* value):
+        self._ptr.IniFilename = value
+
+    @property
     def ini_saving_rate(self):
         return self._ptr.IniSavingRate
 

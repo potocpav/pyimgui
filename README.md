@@ -19,6 +19,7 @@ This is a fork of https://github.com/swistakm/pyimgui, which contains the follow
 * `AddConvexPolyFilled` function
 * Batch draw multiple polylines and filled polygons using NumPy arrays
 * System clipboard integration in the GLFW integration layer
+* Add the `_IO.ini_filename` setter & getter
 
 These are needed for https://github.com/potocpav/python-concur.
 
