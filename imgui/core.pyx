@@ -7178,6 +7178,8 @@ def destroy_context(_ImGuiContext ctx = None):
     if ctx and ctx._ptr != NULL:
         cimgui.DestroyContext(ctx._ptr)
         ctx._ptr = NULL
+        global _io
+        _io = None
     else:
         raise RuntimeError("Context invalid (None or destroyed)")
 
@@ -7201,7 +7203,10 @@ def set_current_context(_ImGuiContext ctx):
         SetCurrentContext(
                 ImGuiContext *ctx);
     """
-    cimgui.SetCurrentContext(ctx._ptr)
+    if ctx is not None:
+        cimgui.SetCurrentContext(ctx._ptr)
+    else:
+        cimgui.SetCurrentContext(NULL)
 
 
 # === Python/C++ cross API for error handling ===

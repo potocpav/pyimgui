@@ -1263,7 +1263,7 @@ struct __pyx_obj_5imgui_4core__IO {
 };
 
 
-/* "imgui/core.pyx":7220
+/* "imgui/core.pyx":7225
  * 
  * @contextmanager
  * def _py_font(_Font font):             # <<<<<<<<<<<<<<
@@ -1276,7 +1276,7 @@ struct __pyx_obj_5imgui_4core___pyx_scope_struct___py_font {
 };
 
 
-/* "imgui/core.pyx":7252
+/* "imgui/core.pyx":7257
  * 
  * @contextmanager
  * def _py_styled(cimgui.ImGuiStyleVar variable, value):             # <<<<<<<<<<<<<<
@@ -1291,7 +1291,7 @@ struct __pyx_obj_5imgui_4core___pyx_scope_struct_1__py_styled {
 };
 
 
-/* "imgui/core.pyx":7261
+/* "imgui/core.pyx":7266
  * 
  * @contextmanager
  * def _py_colored(             # <<<<<<<<<<<<<<
@@ -1309,7 +1309,7 @@ struct __pyx_obj_5imgui_4core___pyx_scope_struct_2__py_colored {
 };
 
 
-/* "imgui/core.pyx":7276
+/* "imgui/core.pyx":7281
  * 
  * @contextmanager
  * def _py_istyled(*variables_and_values):             # <<<<<<<<<<<<<<
@@ -56551,7 +56551,7 @@ static PyObject *__pyx_pf_5imgui_4core_406destroy_context(CYTHON_UNUSED PyObject
  *     if ctx and ctx._ptr != NULL:
  *         cimgui.DestroyContext(ctx._ptr)             # <<<<<<<<<<<<<<
  *         ctx._ptr = NULL
- *     else:
+ *         global _io
  */
     __Pyx_TraceLine(7179,0,__PYX_ERR(0, 7179, __pyx_L1_error))
     try {
@@ -56565,11 +56565,21 @@ static PyObject *__pyx_pf_5imgui_4core_406destroy_context(CYTHON_UNUSED PyObject
  *     if ctx and ctx._ptr != NULL:
  *         cimgui.DestroyContext(ctx._ptr)
  *         ctx._ptr = NULL             # <<<<<<<<<<<<<<
- *     else:
- *         raise RuntimeError("Context invalid (None or destroyed)")
+ *         global _io
+ *         _io = None
  */
     __Pyx_TraceLine(7180,0,__PYX_ERR(0, 7180, __pyx_L1_error))
     __pyx_v_ctx->_ptr = NULL;
+
+    /* "imgui/core.pyx":7182
+ *         ctx._ptr = NULL
+ *         global _io
+ *         _io = None             # <<<<<<<<<<<<<<
+ *     else:
+ *         raise RuntimeError("Context invalid (None or destroyed)")
+ */
+    __Pyx_TraceLine(7182,0,__PYX_ERR(0, 7182, __pyx_L1_error))
+    if (PyDict_SetItem(__pyx_d, __pyx_n_s_io, Py_None) < 0) __PYX_ERR(0, 7182, __pyx_L1_error)
 
     /* "imgui/core.pyx":7178
  *     """
@@ -56581,20 +56591,20 @@ static PyObject *__pyx_pf_5imgui_4core_406destroy_context(CYTHON_UNUSED PyObject
     goto __pyx_L3;
   }
 
-  /* "imgui/core.pyx":7182
- *         ctx._ptr = NULL
+  /* "imgui/core.pyx":7184
+ *         _io = None
  *     else:
  *         raise RuntimeError("Context invalid (None or destroyed)")             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __Pyx_TraceLine(7182,0,__PYX_ERR(0, 7182, __pyx_L1_error))
+  __Pyx_TraceLine(7184,0,__PYX_ERR(0, 7184, __pyx_L1_error))
   /*else*/ {
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__238, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 7182, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__238, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 7184, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 7182, __pyx_L1_error)
+    __PYX_ERR(0, 7184, __pyx_L1_error)
   }
   __pyx_L3:;
 
@@ -56620,7 +56630,7 @@ static PyObject *__pyx_pf_5imgui_4core_406destroy_context(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "imgui/core.pyx":7185
+/* "imgui/core.pyx":7187
  * 
  * 
  * def get_current_context():             # <<<<<<<<<<<<<<
@@ -56652,40 +56662,40 @@ static PyObject *__pyx_pf_5imgui_4core_408get_current_context(CYTHON_UNUSED PyOb
   PyObject *__pyx_t_2 = NULL;
   __Pyx_TraceFrameInit(__pyx_codeobj__239)
   __Pyx_RefNannySetupContext("get_current_context", 0);
-  __Pyx_TraceCall("get_current_context", __pyx_f[0], 7185, 0, __PYX_ERR(0, 7185, __pyx_L1_error));
+  __Pyx_TraceCall("get_current_context", __pyx_f[0], 7187, 0, __PYX_ERR(0, 7187, __pyx_L1_error));
 
-  /* "imgui/core.pyx":7193
+  /* "imgui/core.pyx":7195
  * 
  *     cdef cimgui.ImGuiContext* _ptr
  *     _ptr = cimgui.GetCurrentContext()             # <<<<<<<<<<<<<<
  *     return _ImGuiContext.from_ptr(_ptr)
  * 
  */
-  __Pyx_TraceLine(7193,0,__PYX_ERR(0, 7193, __pyx_L1_error))
+  __Pyx_TraceLine(7195,0,__PYX_ERR(0, 7195, __pyx_L1_error))
   try {
     __pyx_t_1 = ImGui::GetCurrentContext();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 7193, __pyx_L1_error)
+    __PYX_ERR(0, 7195, __pyx_L1_error)
   }
   __pyx_v__ptr = __pyx_t_1;
 
-  /* "imgui/core.pyx":7194
+  /* "imgui/core.pyx":7196
  *     cdef cimgui.ImGuiContext* _ptr
  *     _ptr = cimgui.GetCurrentContext()
  *     return _ImGuiContext.from_ptr(_ptr)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __Pyx_TraceLine(7194,0,__PYX_ERR(0, 7194, __pyx_L1_error))
+  __Pyx_TraceLine(7196,0,__PYX_ERR(0, 7196, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __pyx_f_5imgui_4core_13_ImGuiContext_from_ptr(__pyx_v__ptr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7194, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_5imgui_4core_13_ImGuiContext_from_ptr(__pyx_v__ptr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "imgui/core.pyx":7185
+  /* "imgui/core.pyx":7187
  * 
  * 
  * def get_current_context():             # <<<<<<<<<<<<<<
@@ -56705,7 +56715,7 @@ static PyObject *__pyx_pf_5imgui_4core_408get_current_context(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "imgui/core.pyx":7197
+/* "imgui/core.pyx":7199
  * 
  * 
  * def set_current_context(_ImGuiContext ctx):             # <<<<<<<<<<<<<<
@@ -56721,7 +56731,7 @@ static PyObject *__pyx_pw_5imgui_4core_411set_current_context(PyObject *__pyx_se
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_current_context (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ctx), __pyx_ptype_5imgui_4core__ImGuiContext, 1, "ctx", 0))) __PYX_ERR(0, 7197, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ctx), __pyx_ptype_5imgui_4core__ImGuiContext, 1, "ctx", 0))) __PYX_ERR(0, 7199, __pyx_L1_error)
   __pyx_r = __pyx_pf_5imgui_4core_410set_current_context(__pyx_self, ((struct __pyx_obj_5imgui_4core__ImGuiContext *)__pyx_v_ctx));
 
   /* function exit code */
@@ -56737,26 +56747,68 @@ static PyObject *__pyx_pf_5imgui_4core_410set_current_context(CYTHON_UNUSED PyOb
   PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
   __Pyx_TraceFrameInit(__pyx_codeobj__240)
   __Pyx_RefNannySetupContext("set_current_context", 0);
-  __Pyx_TraceCall("set_current_context", __pyx_f[0], 7197, 0, __PYX_ERR(0, 7197, __pyx_L1_error));
+  __Pyx_TraceCall("set_current_context", __pyx_f[0], 7199, 0, __PYX_ERR(0, 7199, __pyx_L1_error));
 
-  /* "imgui/core.pyx":7204
+  /* "imgui/core.pyx":7206
  *                 ImGuiContext *ctx);
  *     """
- *     cimgui.SetCurrentContext(ctx._ptr)             # <<<<<<<<<<<<<<
+ *     if ctx is not None:             # <<<<<<<<<<<<<<
+ *         cimgui.SetCurrentContext(ctx._ptr)
+ *     else:
+ */
+  __Pyx_TraceLine(7206,0,__PYX_ERR(0, 7206, __pyx_L1_error))
+  __pyx_t_1 = (((PyObject *)__pyx_v_ctx) != Py_None);
+  __pyx_t_2 = (__pyx_t_1 != 0);
+  if (__pyx_t_2) {
+
+    /* "imgui/core.pyx":7207
+ *     """
+ *     if ctx is not None:
+ *         cimgui.SetCurrentContext(ctx._ptr)             # <<<<<<<<<<<<<<
+ *     else:
+ *         cimgui.SetCurrentContext(NULL)
+ */
+    __Pyx_TraceLine(7207,0,__PYX_ERR(0, 7207, __pyx_L1_error))
+    try {
+      ImGui::SetCurrentContext(__pyx_v_ctx->_ptr);
+    } catch(...) {
+      __Pyx_CppExn2PyErr();
+      __PYX_ERR(0, 7207, __pyx_L1_error)
+    }
+
+    /* "imgui/core.pyx":7206
+ *                 ImGuiContext *ctx);
+ *     """
+ *     if ctx is not None:             # <<<<<<<<<<<<<<
+ *         cimgui.SetCurrentContext(ctx._ptr)
+ *     else:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "imgui/core.pyx":7209
+ *         cimgui.SetCurrentContext(ctx._ptr)
+ *     else:
+ *         cimgui.SetCurrentContext(NULL)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __Pyx_TraceLine(7204,0,__PYX_ERR(0, 7204, __pyx_L1_error))
-  try {
-    ImGui::SetCurrentContext(__pyx_v_ctx->_ptr);
-  } catch(...) {
-    __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 7204, __pyx_L1_error)
+  __Pyx_TraceLine(7209,0,__PYX_ERR(0, 7209, __pyx_L1_error))
+  /*else*/ {
+    try {
+      ImGui::SetCurrentContext(NULL);
+    } catch(...) {
+      __Pyx_CppExn2PyErr();
+      __PYX_ERR(0, 7209, __pyx_L1_error)
+    }
   }
+  __pyx_L3:;
 
-  /* "imgui/core.pyx":7197
+  /* "imgui/core.pyx":7199
  * 
  * 
  * def set_current_context(_ImGuiContext ctx):             # <<<<<<<<<<<<<<
@@ -56778,7 +56830,7 @@ static PyObject *__pyx_pf_5imgui_4core_410set_current_context(CYTHON_UNUSED PyOb
 }
 static PyObject *__pyx_gb_5imgui_4core_414generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "imgui/core.pyx":7220
+/* "imgui/core.pyx":7225
  * 
  * @contextmanager
  * def _py_font(_Font font):             # <<<<<<<<<<<<<<
@@ -56794,7 +56846,7 @@ static PyObject *__pyx_pw_5imgui_4core_413_py_font(PyObject *__pyx_self, PyObjec
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_py_font (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_font), __pyx_ptype_5imgui_4core__Font, 1, "font", 0))) __PYX_ERR(0, 7220, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_font), __pyx_ptype_5imgui_4core__Font, 1, "font", 0))) __PYX_ERR(0, 7225, __pyx_L1_error)
   __pyx_r = __pyx_pf_5imgui_4core_412_py_font(__pyx_self, ((struct __pyx_obj_5imgui_4core__Font *)__pyx_v_font));
 
   /* function exit code */
@@ -56815,7 +56867,7 @@ static PyObject *__pyx_pf_5imgui_4core_412_py_font(CYTHON_UNUSED PyObject *__pyx
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_5imgui_4core___pyx_scope_struct___py_font *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 7220, __pyx_L1_error)
+    __PYX_ERR(0, 7225, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -56823,7 +56875,7 @@ static PyObject *__pyx_pf_5imgui_4core_412_py_font(CYTHON_UNUSED PyObject *__pyx
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_font);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_font);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5imgui_4core_414generator, __pyx_codeobj__241, (PyObject *) __pyx_cur_scope, __pyx_n_s_py_font, __pyx_n_s_py_font, __pyx_n_s_imgui_core); if (unlikely(!gen)) __PYX_ERR(0, 7220, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5imgui_4core_414generator, __pyx_codeobj__241, (PyObject *) __pyx_cur_scope, __pyx_n_s_py_font, __pyx_n_s_py_font, __pyx_n_s_imgui_core); if (unlikely(!gen)) __PYX_ERR(0, 7225, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -56850,7 +56902,7 @@ static PyObject *__pyx_gb_5imgui_4core_414generator(__pyx_CoroutineObject *__pyx
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_py_font", 0);
   __Pyx_TraceFrameInit(__pyx_codeobj__241)
-  __Pyx_TraceCall("_py_font", __pyx_f[0], 7220, 0, __PYX_ERR(0, 7220, __pyx_L1_error));
+  __Pyx_TraceCall("_py_font", __pyx_f[0], 7225, 0, __PYX_ERR(0, 7225, __pyx_L1_error));
   switch (__pyx_generator->resume_label) {
     case 0: goto __pyx_L3_first_run;
     case 1: goto __pyx_L4_resume_from_yield;
@@ -56860,17 +56912,17 @@ static PyObject *__pyx_gb_5imgui_4core_414generator(__pyx_CoroutineObject *__pyx
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7220, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7225, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7246
+  /* "imgui/core.pyx":7251
  *         font (_Font): font object retrieved from :any:`add_font_from_file_ttf`.
  *     """
  *     push_font(font)             # <<<<<<<<<<<<<<
  *     yield
  *     pop_font()
  */
-  __Pyx_TraceLine(7246,0,__PYX_ERR(0, 7246, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_push_font); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7246, __pyx_L1_error)
+  __Pyx_TraceLine(7251,0,__PYX_ERR(0, 7251, __pyx_L1_error))
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_push_font); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7251, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -56884,19 +56936,19 @@ static PyObject *__pyx_gb_5imgui_4core_414generator(__pyx_CoroutineObject *__pyx
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, ((PyObject *)__pyx_cur_scope->__pyx_v_font)) : __Pyx_PyObject_CallOneArg(__pyx_t_2, ((PyObject *)__pyx_cur_scope->__pyx_v_font));
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7246, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7251, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "imgui/core.pyx":7247
+  /* "imgui/core.pyx":7252
  *     """
  *     push_font(font)
  *     yield             # <<<<<<<<<<<<<<
  *     pop_font()
  * 
  */
-  __Pyx_TraceLine(7247,0,__PYX_ERR(0, 7247, __pyx_L1_error))
+  __Pyx_TraceLine(7252,0,__PYX_ERR(0, 7252, __pyx_L1_error))
   __pyx_r = Py_None; __Pyx_INCREF(Py_None);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_TraceReturn(__pyx_r, 0);
@@ -56906,17 +56958,17 @@ static PyObject *__pyx_gb_5imgui_4core_414generator(__pyx_CoroutineObject *__pyx
   __pyx_generator->resume_label = 1;
   return __pyx_r;
   __pyx_L4_resume_from_yield:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7247, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7252, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7248
+  /* "imgui/core.pyx":7253
  *     push_font(font)
  *     yield
  *     pop_font()             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __Pyx_TraceLine(7248,0,__PYX_ERR(0, 7248, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_pop_font); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7248, __pyx_L1_error)
+  __Pyx_TraceLine(7253,0,__PYX_ERR(0, 7253, __pyx_L1_error))
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_pop_font); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7253, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -56930,13 +56982,13 @@ static PyObject *__pyx_gb_5imgui_4core_414generator(__pyx_CoroutineObject *__pyx
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7248, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7253, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "imgui/core.pyx":7220
+  /* "imgui/core.pyx":7225
  * 
  * @contextmanager
  * def _py_font(_Font font):             # <<<<<<<<<<<<<<
@@ -56965,7 +57017,7 @@ static PyObject *__pyx_gb_5imgui_4core_414generator(__pyx_CoroutineObject *__pyx
 }
 static PyObject *__pyx_gb_5imgui_4core_417generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "imgui/core.pyx":7252
+/* "imgui/core.pyx":7257
  * 
  * @contextmanager
  * def _py_styled(cimgui.ImGuiStyleVar variable, value):             # <<<<<<<<<<<<<<
@@ -57006,11 +57058,11 @@ static PyObject *__pyx_pw_5imgui_4core_416_py_styled(PyObject *__pyx_self, PyObj
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_value)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_py_styled", 1, 2, 2, 1); __PYX_ERR(0, 7252, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_py_styled", 1, 2, 2, 1); __PYX_ERR(0, 7257, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_py_styled") < 0)) __PYX_ERR(0, 7252, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_py_styled") < 0)) __PYX_ERR(0, 7257, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -57018,12 +57070,12 @@ static PyObject *__pyx_pw_5imgui_4core_416_py_styled(PyObject *__pyx_self, PyObj
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_variable = __Pyx_PyInt_As_ImGuiStyleVar(values[0]); if (unlikely((__pyx_v_variable == ((ImGuiStyleVar)-1)) && PyErr_Occurred())) __PYX_ERR(0, 7252, __pyx_L3_error)
+    __pyx_v_variable = __Pyx_PyInt_As_ImGuiStyleVar(values[0]); if (unlikely((__pyx_v_variable == ((ImGuiStyleVar)-1)) && PyErr_Occurred())) __PYX_ERR(0, 7257, __pyx_L3_error)
     __pyx_v_value = values[1];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_py_styled", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 7252, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_py_styled", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 7257, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("imgui.core._py_styled", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -57045,7 +57097,7 @@ static PyObject *__pyx_pf_5imgui_4core_415_py_styled(CYTHON_UNUSED PyObject *__p
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_5imgui_4core___pyx_scope_struct_1__py_styled *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 7252, __pyx_L1_error)
+    __PYX_ERR(0, 7257, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -57054,7 +57106,7 @@ static PyObject *__pyx_pf_5imgui_4core_415_py_styled(CYTHON_UNUSED PyObject *__p
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_value);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_value);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5imgui_4core_417generator1, __pyx_codeobj__242, (PyObject *) __pyx_cur_scope, __pyx_n_s_py_styled, __pyx_n_s_py_styled, __pyx_n_s_imgui_core); if (unlikely(!gen)) __PYX_ERR(0, 7252, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5imgui_4core_417generator1, __pyx_codeobj__242, (PyObject *) __pyx_cur_scope, __pyx_n_s_py_styled, __pyx_n_s_py_styled, __pyx_n_s_imgui_core); if (unlikely(!gen)) __PYX_ERR(0, 7257, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -57081,7 +57133,7 @@ static PyObject *__pyx_gb_5imgui_4core_417generator1(__pyx_CoroutineObject *__py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_py_styled", 0);
   __Pyx_TraceFrameInit(__pyx_codeobj__242)
-  __Pyx_TraceCall("_py_styled", __pyx_f[0], 7252, 0, __PYX_ERR(0, 7252, __pyx_L1_error));
+  __Pyx_TraceCall("_py_styled", __pyx_f[0], 7257, 0, __PYX_ERR(0, 7257, __pyx_L1_error));
   switch (__pyx_generator->resume_label) {
     case 0: goto __pyx_L3_first_run;
     case 1: goto __pyx_L4_resume_from_yield;
@@ -57091,30 +57143,30 @@ static PyObject *__pyx_gb_5imgui_4core_417generator1(__pyx_CoroutineObject *__py
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7252, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7257, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7255
+  /* "imgui/core.pyx":7260
  *     # note: we treat bool value as integer to guess if we are required to pop
  *     #       anything because IMGUI may simply skip pushing
  *     count = push_style_var(variable, value)             # <<<<<<<<<<<<<<
  *     yield
  *     pop_style_var(count)
  */
-  __Pyx_TraceLine(7255,0,__PYX_ERR(0, 7255, __pyx_L1_error))
-  __pyx_t_1 = __pyx_f_5imgui_4core_push_style_var(__pyx_cur_scope->__pyx_v_variable, __pyx_cur_scope->__pyx_v_value, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7255, __pyx_L1_error)
+  __Pyx_TraceLine(7260,0,__PYX_ERR(0, 7260, __pyx_L1_error))
+  __pyx_t_1 = __pyx_f_5imgui_4core_push_style_var(__pyx_cur_scope->__pyx_v_variable, __pyx_cur_scope->__pyx_v_value, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7260, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_count = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "imgui/core.pyx":7256
+  /* "imgui/core.pyx":7261
  *     #       anything because IMGUI may simply skip pushing
  *     count = push_style_var(variable, value)
  *     yield             # <<<<<<<<<<<<<<
  *     pop_style_var(count)
  * 
  */
-  __Pyx_TraceLine(7256,0,__PYX_ERR(0, 7256, __pyx_L1_error))
+  __Pyx_TraceLine(7261,0,__PYX_ERR(0, 7261, __pyx_L1_error))
   __pyx_r = Py_None; __Pyx_INCREF(Py_None);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_TraceReturn(__pyx_r, 0);
@@ -57124,25 +57176,25 @@ static PyObject *__pyx_gb_5imgui_4core_417generator1(__pyx_CoroutineObject *__py
   __pyx_generator->resume_label = 1;
   return __pyx_r;
   __pyx_L4_resume_from_yield:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7256, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7261, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7257
+  /* "imgui/core.pyx":7262
  *     count = push_style_var(variable, value)
  *     yield
  *     pop_style_var(count)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __Pyx_TraceLine(7257,0,__PYX_ERR(0, 7257, __pyx_L1_error))
-  __pyx_t_2 = __Pyx_PyInt_As_unsigned_int(__pyx_cur_scope->__pyx_v_count); if (unlikely((__pyx_t_2 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 7257, __pyx_L1_error)
+  __Pyx_TraceLine(7262,0,__PYX_ERR(0, 7262, __pyx_L1_error))
+  __pyx_t_2 = __Pyx_PyInt_As_unsigned_int(__pyx_cur_scope->__pyx_v_count); if (unlikely((__pyx_t_2 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 7262, __pyx_L1_error)
   __pyx_t_3.__pyx_n = 1;
   __pyx_t_3.count = __pyx_t_2;
-  __pyx_t_1 = __pyx_f_5imgui_4core_pop_style_var(0, &__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7257, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5imgui_4core_pop_style_var(0, &__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7262, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "imgui/core.pyx":7252
+  /* "imgui/core.pyx":7257
  * 
  * @contextmanager
  * def _py_styled(cimgui.ImGuiStyleVar variable, value):             # <<<<<<<<<<<<<<
@@ -57169,7 +57221,7 @@ static PyObject *__pyx_gb_5imgui_4core_417generator1(__pyx_CoroutineObject *__py
 }
 static PyObject *__pyx_gb_5imgui_4core_420generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "imgui/core.pyx":7261
+/* "imgui/core.pyx":7266
  * 
  * @contextmanager
  * def _py_colored(             # <<<<<<<<<<<<<<
@@ -57219,19 +57271,19 @@ static PyObject *__pyx_pw_5imgui_4core_419_py_colored(PyObject *__pyx_self, PyOb
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_r)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_py_colored", 0, 4, 5, 1); __PYX_ERR(0, 7261, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_py_colored", 0, 4, 5, 1); __PYX_ERR(0, 7266, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_g)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_py_colored", 0, 4, 5, 2); __PYX_ERR(0, 7261, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_py_colored", 0, 4, 5, 2); __PYX_ERR(0, 7266, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_b)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_py_colored", 0, 4, 5, 3); __PYX_ERR(0, 7261, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_py_colored", 0, 4, 5, 3); __PYX_ERR(0, 7266, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -57241,7 +57293,7 @@ static PyObject *__pyx_pw_5imgui_4core_419_py_colored(PyObject *__pyx_self, PyOb
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_py_colored") < 0)) __PYX_ERR(0, 7261, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_py_colored") < 0)) __PYX_ERR(0, 7266, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -57255,19 +57307,19 @@ static PyObject *__pyx_pw_5imgui_4core_419_py_colored(PyObject *__pyx_self, PyOb
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_variable = __Pyx_PyInt_As_ImGuiCol(values[0]); if (unlikely((__pyx_v_variable == ((ImGuiCol)-1)) && PyErr_Occurred())) __PYX_ERR(0, 7262, __pyx_L3_error)
-    __pyx_v_r = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_r == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 7263, __pyx_L3_error)
-    __pyx_v_g = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_g == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 7264, __pyx_L3_error)
-    __pyx_v_b = __pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_b == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 7265, __pyx_L3_error)
+    __pyx_v_variable = __Pyx_PyInt_As_ImGuiCol(values[0]); if (unlikely((__pyx_v_variable == ((ImGuiCol)-1)) && PyErr_Occurred())) __PYX_ERR(0, 7267, __pyx_L3_error)
+    __pyx_v_r = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_r == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 7268, __pyx_L3_error)
+    __pyx_v_g = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_g == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 7269, __pyx_L3_error)
+    __pyx_v_b = __pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_b == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 7270, __pyx_L3_error)
     if (values[4]) {
-      __pyx_v_a = __pyx_PyFloat_AsFloat(values[4]); if (unlikely((__pyx_v_a == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 7266, __pyx_L3_error)
+      __pyx_v_a = __pyx_PyFloat_AsFloat(values[4]); if (unlikely((__pyx_v_a == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 7271, __pyx_L3_error)
     } else {
       __pyx_v_a = ((float)1.);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_py_colored", 0, 4, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 7261, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_py_colored", 0, 4, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 7266, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("imgui.core._py_colored", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -57289,7 +57341,7 @@ static PyObject *__pyx_pf_5imgui_4core_418_py_colored(CYTHON_UNUSED PyObject *__
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_5imgui_4core___pyx_scope_struct_2__py_colored *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 7261, __pyx_L1_error)
+    __PYX_ERR(0, 7266, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -57299,7 +57351,7 @@ static PyObject *__pyx_pf_5imgui_4core_418_py_colored(CYTHON_UNUSED PyObject *__
   __pyx_cur_scope->__pyx_v_b = __pyx_v_b;
   __pyx_cur_scope->__pyx_v_a = __pyx_v_a;
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5imgui_4core_420generator2, __pyx_codeobj__243, (PyObject *) __pyx_cur_scope, __pyx_n_s_py_colored, __pyx_n_s_py_colored, __pyx_n_s_imgui_core); if (unlikely(!gen)) __PYX_ERR(0, 7261, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5imgui_4core_420generator2, __pyx_codeobj__243, (PyObject *) __pyx_cur_scope, __pyx_n_s_py_colored, __pyx_n_s_py_colored, __pyx_n_s_imgui_core); if (unlikely(!gen)) __PYX_ERR(0, 7266, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -57327,7 +57379,7 @@ static PyObject *__pyx_gb_5imgui_4core_420generator2(__pyx_CoroutineObject *__py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_py_colored", 0);
   __Pyx_TraceFrameInit(__pyx_codeobj__243)
-  __Pyx_TraceCall("_py_colored", __pyx_f[0], 7261, 0, __PYX_ERR(0, 7261, __pyx_L1_error));
+  __Pyx_TraceCall("_py_colored", __pyx_f[0], 7266, 0, __PYX_ERR(0, 7266, __pyx_L1_error));
   switch (__pyx_generator->resume_label) {
     case 0: goto __pyx_L3_first_run;
     case 1: goto __pyx_L4_resume_from_yield;
@@ -57337,32 +57389,32 @@ static PyObject *__pyx_gb_5imgui_4core_420generator2(__pyx_CoroutineObject *__py
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7261, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7266, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7270
+  /* "imgui/core.pyx":7275
  *     # note: we treat bool value as integer to guess if we are required to pop
  *     #       anything because IMGUI may simply skip pushing
  *     count = push_style_color(variable, r, g, b, a)             # <<<<<<<<<<<<<<
  *     yield
  *     pop_style_color(count)
  */
-  __Pyx_TraceLine(7270,0,__PYX_ERR(0, 7270, __pyx_L1_error))
+  __Pyx_TraceLine(7275,0,__PYX_ERR(0, 7275, __pyx_L1_error))
   __pyx_t_2.__pyx_n = 1;
   __pyx_t_2.a = __pyx_cur_scope->__pyx_v_a;
-  __pyx_t_1 = __pyx_f_5imgui_4core_push_style_color(__pyx_cur_scope->__pyx_v_variable, __pyx_cur_scope->__pyx_v_r, __pyx_cur_scope->__pyx_v_g, __pyx_cur_scope->__pyx_v_b, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7270, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5imgui_4core_push_style_color(__pyx_cur_scope->__pyx_v_variable, __pyx_cur_scope->__pyx_v_r, __pyx_cur_scope->__pyx_v_g, __pyx_cur_scope->__pyx_v_b, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7275, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_count = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "imgui/core.pyx":7271
+  /* "imgui/core.pyx":7276
  *     #       anything because IMGUI may simply skip pushing
  *     count = push_style_color(variable, r, g, b, a)
  *     yield             # <<<<<<<<<<<<<<
  *     pop_style_color(count)
  * 
  */
-  __Pyx_TraceLine(7271,0,__PYX_ERR(0, 7271, __pyx_L1_error))
+  __Pyx_TraceLine(7276,0,__PYX_ERR(0, 7276, __pyx_L1_error))
   __pyx_r = Py_None; __Pyx_INCREF(Py_None);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_TraceReturn(__pyx_r, 0);
@@ -57372,25 +57424,25 @@ static PyObject *__pyx_gb_5imgui_4core_420generator2(__pyx_CoroutineObject *__py
   __pyx_generator->resume_label = 1;
   return __pyx_r;
   __pyx_L4_resume_from_yield:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7271, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7276, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7272
+  /* "imgui/core.pyx":7277
  *     count = push_style_color(variable, r, g, b, a)
  *     yield
  *     pop_style_color(count)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __Pyx_TraceLine(7272,0,__PYX_ERR(0, 7272, __pyx_L1_error))
-  __pyx_t_3 = __Pyx_PyInt_As_unsigned_int(__pyx_cur_scope->__pyx_v_count); if (unlikely((__pyx_t_3 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 7272, __pyx_L1_error)
+  __Pyx_TraceLine(7277,0,__PYX_ERR(0, 7277, __pyx_L1_error))
+  __pyx_t_3 = __Pyx_PyInt_As_unsigned_int(__pyx_cur_scope->__pyx_v_count); if (unlikely((__pyx_t_3 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 7277, __pyx_L1_error)
   __pyx_t_4.__pyx_n = 1;
   __pyx_t_4.count = __pyx_t_3;
-  __pyx_t_1 = __pyx_f_5imgui_4core_pop_style_color(0, &__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7272, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5imgui_4core_pop_style_color(0, &__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7277, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "imgui/core.pyx":7261
+  /* "imgui/core.pyx":7266
  * 
  * @contextmanager
  * def _py_colored(             # <<<<<<<<<<<<<<
@@ -57417,7 +57469,7 @@ static PyObject *__pyx_gb_5imgui_4core_420generator2(__pyx_CoroutineObject *__py
 }
 static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "imgui/core.pyx":7276
+/* "imgui/core.pyx":7281
  * 
  * @contextmanager
  * def _py_istyled(*variables_and_values):             # <<<<<<<<<<<<<<
@@ -57454,7 +57506,7 @@ static PyObject *__pyx_pf_5imgui_4core_421_py_istyled(CYTHON_UNUSED PyObject *__
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_5imgui_4core___pyx_scope_struct_3__py_istyled *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 7276, __pyx_L1_error)
+    __PYX_ERR(0, 7281, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -57462,7 +57514,7 @@ static PyObject *__pyx_pf_5imgui_4core_421_py_istyled(CYTHON_UNUSED PyObject *__
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_variables_and_values);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_variables_and_values);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5imgui_4core_423generator3, __pyx_codeobj__244, (PyObject *) __pyx_cur_scope, __pyx_n_s_py_istyled, __pyx_n_s_py_istyled, __pyx_n_s_imgui_core); if (unlikely(!gen)) __PYX_ERR(0, 7276, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5imgui_4core_423generator3, __pyx_codeobj__244, (PyObject *) __pyx_cur_scope, __pyx_n_s_py_istyled, __pyx_n_s_py_istyled, __pyx_n_s_imgui_core); if (unlikely(!gen)) __PYX_ERR(0, 7281, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -57507,7 +57559,7 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_py_istyled", 0);
   __Pyx_TraceFrameInit(__pyx_codeobj__244)
-  __Pyx_TraceCall("_py_istyled", __pyx_f[0], 7276, 0, __PYX_ERR(0, 7276, __pyx_L1_error));
+  __Pyx_TraceCall("_py_istyled", __pyx_f[0], 7281, 0, __PYX_ERR(0, 7281, __pyx_L1_error));
   switch (__pyx_generator->resume_label) {
     case 0: goto __pyx_L3_first_run;
     case 1: goto __pyx_L18_resume_from_yield;
@@ -57517,42 +57569,42 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7276, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7281, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7278
+  /* "imgui/core.pyx":7283
  * def _py_istyled(*variables_and_values):
  *     # todo: rename to nstyled?
  *     count = 0             # <<<<<<<<<<<<<<
  *     iterator = iter(variables_and_values)
  * 
  */
-  __Pyx_TraceLine(7278,0,__PYX_ERR(0, 7278, __pyx_L1_error))
+  __Pyx_TraceLine(7283,0,__PYX_ERR(0, 7283, __pyx_L1_error))
   __Pyx_INCREF(__pyx_int_0);
   __Pyx_GIVEREF(__pyx_int_0);
   __pyx_cur_scope->__pyx_v_count = __pyx_int_0;
 
-  /* "imgui/core.pyx":7279
+  /* "imgui/core.pyx":7284
  *     # todo: rename to nstyled?
  *     count = 0
  *     iterator = iter(variables_and_values)             # <<<<<<<<<<<<<<
  * 
  *     try:
  */
-  __Pyx_TraceLine(7279,0,__PYX_ERR(0, 7279, __pyx_L1_error))
-  __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_v_variables_and_values); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7279, __pyx_L1_error)
+  __Pyx_TraceLine(7284,0,__PYX_ERR(0, 7284, __pyx_L1_error))
+  __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_v_variables_and_values); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_iterator = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "imgui/core.pyx":7281
+  /* "imgui/core.pyx":7286
  *     iterator = iter(variables_and_values)
  * 
  *     try:             # <<<<<<<<<<<<<<
  *         # note: this is a trick that allows us convert flat list to pairs
  *         for var, val in izip_longest(iterator, iterator, fillvalue=None):
  */
-  __Pyx_TraceLine(7281,0,__PYX_ERR(0, 7281, __pyx_L1_error))
+  __Pyx_TraceLine(7286,0,__PYX_ERR(0, 7286, __pyx_L1_error))
   /*try:*/ {
     {
       __Pyx_ExceptionSave(&__pyx_t_2, &__pyx_t_3, &__pyx_t_4);
@@ -57561,17 +57613,17 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
       __Pyx_XGOTREF(__pyx_t_4);
       /*try:*/ {
 
-        /* "imgui/core.pyx":7283
+        /* "imgui/core.pyx":7288
  *     try:
  *         # note: this is a trick that allows us convert flat list to pairs
  *         for var, val in izip_longest(iterator, iterator, fillvalue=None):             # <<<<<<<<<<<<<<
  *             # note: since we group into pairs it is impossible to have
  *             #       var equal to None
  */
-        __Pyx_TraceLine(7283,0,__PYX_ERR(0, 7283, __pyx_L7_error))
-        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_izip_longest); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7283, __pyx_L7_error)
+        __Pyx_TraceLine(7288,0,__PYX_ERR(0, 7288, __pyx_L7_error))
+        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_izip_longest); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7288, __pyx_L7_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 7283, __pyx_L7_error)
+        __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 7288, __pyx_L7_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_INCREF(__pyx_cur_scope->__pyx_v_iterator);
         __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_iterator);
@@ -57579,10 +57631,10 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
         __Pyx_INCREF(__pyx_cur_scope->__pyx_v_iterator);
         __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_iterator);
         PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_cur_scope->__pyx_v_iterator);
-        __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 7283, __pyx_L7_error)
+        __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 7288, __pyx_L7_error)
         __Pyx_GOTREF(__pyx_t_6);
-        if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_fillvalue, Py_None) < 0) __PYX_ERR(0, 7283, __pyx_L7_error)
-        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 7283, __pyx_L7_error)
+        if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_fillvalue, Py_None) < 0) __PYX_ERR(0, 7288, __pyx_L7_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 7288, __pyx_L7_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -57591,9 +57643,9 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
           __pyx_t_6 = __pyx_t_7; __Pyx_INCREF(__pyx_t_6); __pyx_t_8 = 0;
           __pyx_t_9 = NULL;
         } else {
-          __pyx_t_8 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 7283, __pyx_L7_error)
+          __pyx_t_8 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 7288, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_6);
-          __pyx_t_9 = Py_TYPE(__pyx_t_6)->tp_iternext; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7283, __pyx_L7_error)
+          __pyx_t_9 = Py_TYPE(__pyx_t_6)->tp_iternext; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7288, __pyx_L7_error)
         }
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         for (;;) {
@@ -57601,17 +57653,17 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
             if (likely(PyList_CheckExact(__pyx_t_6))) {
               if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_6)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_7 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_8); __Pyx_INCREF(__pyx_t_7); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 7283, __pyx_L7_error)
+              __pyx_t_7 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_8); __Pyx_INCREF(__pyx_t_7); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 7288, __pyx_L7_error)
               #else
-              __pyx_t_7 = PySequence_ITEM(__pyx_t_6, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 7283, __pyx_L7_error)
+              __pyx_t_7 = PySequence_ITEM(__pyx_t_6, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 7288, __pyx_L7_error)
               __Pyx_GOTREF(__pyx_t_7);
               #endif
             } else {
               if (__pyx_t_8 >= PyTuple_GET_SIZE(__pyx_t_6)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_8); __Pyx_INCREF(__pyx_t_7); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 7283, __pyx_L7_error)
+              __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_8); __Pyx_INCREF(__pyx_t_7); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 7288, __pyx_L7_error)
               #else
-              __pyx_t_7 = PySequence_ITEM(__pyx_t_6, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 7283, __pyx_L7_error)
+              __pyx_t_7 = PySequence_ITEM(__pyx_t_6, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 7288, __pyx_L7_error)
               __Pyx_GOTREF(__pyx_t_7);
               #endif
             }
@@ -57621,7 +57673,7 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
               PyObject* exc_type = PyErr_Occurred();
               if (exc_type) {
                 if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                else __PYX_ERR(0, 7283, __pyx_L7_error)
+                else __PYX_ERR(0, 7288, __pyx_L7_error)
               }
               break;
             }
@@ -57633,7 +57685,7 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
             if (unlikely(size != 2)) {
               if (size > 2) __Pyx_RaiseTooManyValuesError(2);
               else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-              __PYX_ERR(0, 7283, __pyx_L7_error)
+              __PYX_ERR(0, 7288, __pyx_L7_error)
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
             if (likely(PyTuple_CheckExact(sequence))) {
@@ -57646,15 +57698,15 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
             __Pyx_INCREF(__pyx_t_5);
             __Pyx_INCREF(__pyx_t_1);
             #else
-            __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 7283, __pyx_L7_error)
+            __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 7288, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_5);
-            __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7283, __pyx_L7_error)
+            __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7288, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_1);
             #endif
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           } else {
             Py_ssize_t index = -1;
-            __pyx_t_10 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 7283, __pyx_L7_error)
+            __pyx_t_10 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 7288, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
             __pyx_t_11 = Py_TYPE(__pyx_t_10)->tp_iternext;
@@ -57662,7 +57714,7 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
             __Pyx_GOTREF(__pyx_t_5);
             index = 1; __pyx_t_1 = __pyx_t_11(__pyx_t_10); if (unlikely(!__pyx_t_1)) goto __pyx_L15_unpacking_failed;
             __Pyx_GOTREF(__pyx_t_1);
-            if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 2) < 0) __PYX_ERR(0, 7283, __pyx_L7_error)
+            if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 2) < 0) __PYX_ERR(0, 7288, __pyx_L7_error)
             __pyx_t_11 = NULL;
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             goto __pyx_L16_unpacking_done;
@@ -57670,7 +57722,7 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __pyx_t_11 = NULL;
             if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-            __PYX_ERR(0, 7283, __pyx_L7_error)
+            __PYX_ERR(0, 7288, __pyx_L7_error)
             __pyx_L16_unpacking_done:;
           }
           __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_var);
@@ -57682,30 +57734,30 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
           __Pyx_GIVEREF(__pyx_t_1);
           __pyx_t_1 = 0;
 
-          /* "imgui/core.pyx":7286
+          /* "imgui/core.pyx":7291
  *             # note: since we group into pairs it is impossible to have
  *             #       var equal to None
  *             if val is not None:             # <<<<<<<<<<<<<<
  *                 count += push_style_var(var, val)
  *             else:
  */
-          __Pyx_TraceLine(7286,0,__PYX_ERR(0, 7286, __pyx_L7_error))
+          __Pyx_TraceLine(7291,0,__PYX_ERR(0, 7291, __pyx_L7_error))
           __pyx_t_12 = (__pyx_cur_scope->__pyx_v_val != Py_None);
           __pyx_t_13 = (__pyx_t_12 != 0);
           if (likely(__pyx_t_13)) {
 
-            /* "imgui/core.pyx":7287
+            /* "imgui/core.pyx":7292
  *             #       var equal to None
  *             if val is not None:
  *                 count += push_style_var(var, val)             # <<<<<<<<<<<<<<
  *             else:
  *                 raise ValueError(
  */
-            __Pyx_TraceLine(7287,0,__PYX_ERR(0, 7287, __pyx_L7_error))
-            __pyx_t_14 = __Pyx_PyInt_As_ImGuiStyleVar(__pyx_cur_scope->__pyx_v_var); if (unlikely((__pyx_t_14 == ((ImGuiStyleVar)-1)) && PyErr_Occurred())) __PYX_ERR(0, 7287, __pyx_L7_error)
-            __pyx_t_7 = __pyx_f_5imgui_4core_push_style_var(__pyx_t_14, __pyx_cur_scope->__pyx_v_val, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 7287, __pyx_L7_error)
+            __Pyx_TraceLine(7292,0,__PYX_ERR(0, 7292, __pyx_L7_error))
+            __pyx_t_14 = __Pyx_PyInt_As_ImGuiStyleVar(__pyx_cur_scope->__pyx_v_var); if (unlikely((__pyx_t_14 == ((ImGuiStyleVar)-1)) && PyErr_Occurred())) __PYX_ERR(0, 7292, __pyx_L7_error)
+            __pyx_t_7 = __pyx_f_5imgui_4core_push_style_var(__pyx_t_14, __pyx_cur_scope->__pyx_v_val, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 7292, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_7);
-            __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_cur_scope->__pyx_v_count, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7287, __pyx_L7_error)
+            __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_cur_scope->__pyx_v_count, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7292, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
             __Pyx_GOTREF(__pyx_cur_scope->__pyx_v_count);
@@ -57713,7 +57765,7 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
             __Pyx_GIVEREF(__pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "imgui/core.pyx":7286
+            /* "imgui/core.pyx":7291
  *             # note: since we group into pairs it is impossible to have
  *             #       var equal to None
  *             if val is not None:             # <<<<<<<<<<<<<<
@@ -57723,25 +57775,25 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
             goto __pyx_L17;
           }
 
-          /* "imgui/core.pyx":7289
+          /* "imgui/core.pyx":7294
  *                 count += push_style_var(var, val)
  *             else:
  *                 raise ValueError(             # <<<<<<<<<<<<<<
  *                     "Unsufficient style info: {} variable lacks a value"
  *                     "".format(var)
  */
-          __Pyx_TraceLine(7289,0,__PYX_ERR(0, 7289, __pyx_L7_error))
+          __Pyx_TraceLine(7294,0,__PYX_ERR(0, 7294, __pyx_L7_error))
           /*else*/ {
 
-            /* "imgui/core.pyx":7291
+            /* "imgui/core.pyx":7296
  *                 raise ValueError(
  *                     "Unsufficient style info: {} variable lacks a value"
  *                     "".format(var)             # <<<<<<<<<<<<<<
  *                 )
  *     except:
  */
-            __Pyx_TraceLine(7291,0,__PYX_ERR(0, 7291, __pyx_L7_error))
-            __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Unsufficient_style_info_variable, __pyx_n_s_format); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 7291, __pyx_L7_error)
+            __Pyx_TraceLine(7296,0,__PYX_ERR(0, 7296, __pyx_L7_error))
+            __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Unsufficient_style_info_variable, __pyx_n_s_format); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 7296, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_7);
             __pyx_t_5 = NULL;
             if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -57755,39 +57807,39 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
             }
             __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_5, __pyx_cur_scope->__pyx_v_var) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_cur_scope->__pyx_v_var);
             __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-            if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7291, __pyx_L7_error)
+            if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7296, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-            /* "imgui/core.pyx":7289
+            /* "imgui/core.pyx":7294
  *                 count += push_style_var(var, val)
  *             else:
  *                 raise ValueError(             # <<<<<<<<<<<<<<
  *                     "Unsufficient style info: {} variable lacks a value"
  *                     "".format(var)
  */
-            __Pyx_TraceLine(7289,0,__PYX_ERR(0, 7289, __pyx_L7_error))
-            __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 7289, __pyx_L7_error)
+            __Pyx_TraceLine(7294,0,__PYX_ERR(0, 7294, __pyx_L7_error))
+            __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 7294, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __Pyx_Raise(__pyx_t_7, 0, 0, 0);
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-            __PYX_ERR(0, 7289, __pyx_L7_error)
+            __PYX_ERR(0, 7294, __pyx_L7_error)
           }
           __pyx_L17:;
 
-          /* "imgui/core.pyx":7283
+          /* "imgui/core.pyx":7288
  *     try:
  *         # note: this is a trick that allows us convert flat list to pairs
  *         for var, val in izip_longest(iterator, iterator, fillvalue=None):             # <<<<<<<<<<<<<<
  *             # note: since we group into pairs it is impossible to have
  *             #       var equal to None
  */
-          __Pyx_TraceLine(7283,0,__PYX_ERR(0, 7283, __pyx_L7_error))
+          __Pyx_TraceLine(7288,0,__PYX_ERR(0, 7288, __pyx_L7_error))
         }
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "imgui/core.pyx":7281
+        /* "imgui/core.pyx":7286
  *     iterator = iter(variables_and_values)
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -57796,14 +57848,14 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
  */
       }
 
-      /* "imgui/core.pyx":7296
+      /* "imgui/core.pyx":7301
  *         raise
  *     else:
  *         yield             # <<<<<<<<<<<<<<
  * 
  *     finally:
  */
-      __Pyx_TraceLine(7296,0,__PYX_ERR(0, 7296, __pyx_L9_except_error))
+      __Pyx_TraceLine(7301,0,__PYX_ERR(0, 7301, __pyx_L9_except_error))
       /*else:*/ {
         __pyx_r = Py_None; __Pyx_INCREF(Py_None);
         __Pyx_XGIVEREF(__pyx_t_2);
@@ -57829,7 +57881,7 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
         __pyx_t_4 = __pyx_cur_scope->__pyx_t_2;
         __pyx_cur_scope->__pyx_t_2 = 0;
         __Pyx_XGOTREF(__pyx_t_4);
-        if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7296, __pyx_L9_except_error)
+        if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 7301, __pyx_L9_except_error)
       }
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -57842,39 +57894,39 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "imgui/core.pyx":7293
+      /* "imgui/core.pyx":7298
  *                     "".format(var)
  *                 )
  *     except:             # <<<<<<<<<<<<<<
  *         raise
  *     else:
  */
-      __Pyx_TraceLine(7293,0,__PYX_ERR(0, 7293, __pyx_L9_except_error))
+      __Pyx_TraceLine(7298,0,__PYX_ERR(0, 7298, __pyx_L9_except_error))
       /*except:*/ {
         __Pyx_AddTraceback("imgui.core._py_istyled", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_7, &__pyx_t_1) < 0) __PYX_ERR(0, 7293, __pyx_L9_except_error)
+        if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_7, &__pyx_t_1) < 0) __PYX_ERR(0, 7298, __pyx_L9_except_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_GOTREF(__pyx_t_1);
 
-        /* "imgui/core.pyx":7294
+        /* "imgui/core.pyx":7299
  *                 )
  *     except:
  *         raise             # <<<<<<<<<<<<<<
  *     else:
  *         yield
  */
-        __Pyx_TraceLine(7294,0,__PYX_ERR(0, 7294, __pyx_L9_except_error))
+        __Pyx_TraceLine(7299,0,__PYX_ERR(0, 7299, __pyx_L9_except_error))
         __Pyx_GIVEREF(__pyx_t_6);
         __Pyx_GIVEREF(__pyx_t_7);
         __Pyx_XGIVEREF(__pyx_t_1);
         __Pyx_ErrRestoreWithState(__pyx_t_6, __pyx_t_7, __pyx_t_1);
         __pyx_t_6 = 0; __pyx_t_7 = 0; __pyx_t_1 = 0; 
-        __PYX_ERR(0, 7294, __pyx_L9_except_error)
+        __PYX_ERR(0, 7299, __pyx_L9_except_error)
       }
       __pyx_L9_except_error:;
 
-      /* "imgui/core.pyx":7281
+      /* "imgui/core.pyx":7286
  *     iterator = iter(variables_and_values)
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -57890,22 +57942,22 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
     }
   }
 
-  /* "imgui/core.pyx":7300
+  /* "imgui/core.pyx":7305
  *     finally:
  *         # perf: short wiring despite we have a wrapper for this
  *         cimgui.PopStyleVar(count)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __Pyx_TraceLine(7300,0,__PYX_ERR(0, 7300, __pyx_L5_error))
+  __Pyx_TraceLine(7305,0,__PYX_ERR(0, 7305, __pyx_L5_error))
   /*finally:*/ {
     /*normal exit:*/{
-      __pyx_t_15 = __Pyx_PyInt_As_int(__pyx_cur_scope->__pyx_v_count); if (unlikely((__pyx_t_15 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 7300, __pyx_L1_error)
+      __pyx_t_15 = __Pyx_PyInt_As_int(__pyx_cur_scope->__pyx_v_count); if (unlikely((__pyx_t_15 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 7305, __pyx_L1_error)
       try {
         ImGui::PopStyleVar(__pyx_t_15);
       } catch(...) {
         __Pyx_CppExn2PyErr();
-        __PYX_ERR(0, 7300, __pyx_L1_error)
+        __PYX_ERR(0, 7305, __pyx_L1_error)
       }
       goto __pyx_L6;
     }
@@ -57928,12 +57980,12 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
       __Pyx_XGOTREF(__pyx_t_20);
       __pyx_t_15 = __pyx_lineno; __pyx_t_16 = __pyx_clineno; __pyx_t_17 = __pyx_filename;
       {
-        __pyx_t_21 = __Pyx_PyInt_As_int(__pyx_cur_scope->__pyx_v_count); if (unlikely((__pyx_t_21 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 7300, __pyx_L22_error)
+        __pyx_t_21 = __Pyx_PyInt_As_int(__pyx_cur_scope->__pyx_v_count); if (unlikely((__pyx_t_21 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 7305, __pyx_L22_error)
         try {
           ImGui::PopStyleVar(__pyx_t_21);
         } catch(...) {
           __Pyx_CppExn2PyErr();
-          __PYX_ERR(0, 7300, __pyx_L22_error)
+          __PYX_ERR(0, 7305, __pyx_L22_error)
         }
       }
       if (PY_MAJOR_VERSION >= 3) {
@@ -57966,7 +58018,7 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
   }
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "imgui/core.pyx":7276
+  /* "imgui/core.pyx":7281
  * 
  * @contextmanager
  * def _py_istyled(*variables_and_values):             # <<<<<<<<<<<<<<
@@ -57996,7 +58048,7 @@ static PyObject *__pyx_gb_5imgui_4core_423generator3(__pyx_CoroutineObject *__py
   return __pyx_r;
 }
 
-/* "imgui/core.pyx":7303
+/* "imgui/core.pyx":7308
  * 
  * 
  * def _py_vertex_buffer_vertex_pos_offset():             # <<<<<<<<<<<<<<
@@ -58026,24 +58078,24 @@ static PyObject *__pyx_pf_5imgui_4core_424_py_vertex_buffer_vertex_pos_offset(CY
   PyObject *__pyx_t_1 = NULL;
   __Pyx_TraceFrameInit(__pyx_codeobj__245)
   __Pyx_RefNannySetupContext("_py_vertex_buffer_vertex_pos_offset", 0);
-  __Pyx_TraceCall("_py_vertex_buffer_vertex_pos_offset", __pyx_f[0], 7303, 0, __PYX_ERR(0, 7303, __pyx_L1_error));
+  __Pyx_TraceCall("_py_vertex_buffer_vertex_pos_offset", __pyx_f[0], 7308, 0, __PYX_ERR(0, 7308, __pyx_L1_error));
 
-  /* "imgui/core.pyx":7304
+  /* "imgui/core.pyx":7309
  * 
  * def _py_vertex_buffer_vertex_pos_offset():
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).pos             # <<<<<<<<<<<<<<
  * 
  * def _py_vertex_buffer_vertex_uv_offset():
  */
-  __Pyx_TraceLine(7304,0,__PYX_ERR(0, 7304, __pyx_L1_error))
+  __Pyx_TraceLine(7309,0,__PYX_ERR(0, 7309, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_FromSize_t(((uintptr_t)((size_t)(&((ImDrawVert *)NULL)->pos)))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7304, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t(((uintptr_t)((size_t)(&((ImDrawVert *)NULL)->pos)))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7309, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "imgui/core.pyx":7303
+  /* "imgui/core.pyx":7308
  * 
  * 
  * def _py_vertex_buffer_vertex_pos_offset():             # <<<<<<<<<<<<<<
@@ -58063,7 +58115,7 @@ static PyObject *__pyx_pf_5imgui_4core_424_py_vertex_buffer_vertex_pos_offset(CY
   return __pyx_r;
 }
 
-/* "imgui/core.pyx":7306
+/* "imgui/core.pyx":7311
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).pos
  * 
  * def _py_vertex_buffer_vertex_uv_offset():             # <<<<<<<<<<<<<<
@@ -58093,24 +58145,24 @@ static PyObject *__pyx_pf_5imgui_4core_426_py_vertex_buffer_vertex_uv_offset(CYT
   PyObject *__pyx_t_1 = NULL;
   __Pyx_TraceFrameInit(__pyx_codeobj__246)
   __Pyx_RefNannySetupContext("_py_vertex_buffer_vertex_uv_offset", 0);
-  __Pyx_TraceCall("_py_vertex_buffer_vertex_uv_offset", __pyx_f[0], 7306, 0, __PYX_ERR(0, 7306, __pyx_L1_error));
+  __Pyx_TraceCall("_py_vertex_buffer_vertex_uv_offset", __pyx_f[0], 7311, 0, __PYX_ERR(0, 7311, __pyx_L1_error));
 
-  /* "imgui/core.pyx":7307
+  /* "imgui/core.pyx":7312
  * 
  * def _py_vertex_buffer_vertex_uv_offset():
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).uv             # <<<<<<<<<<<<<<
  * 
  * def _py_vertex_buffer_vertex_col_offset():
  */
-  __Pyx_TraceLine(7307,0,__PYX_ERR(0, 7307, __pyx_L1_error))
+  __Pyx_TraceLine(7312,0,__PYX_ERR(0, 7312, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_FromSize_t(((uintptr_t)((size_t)(&((ImDrawVert *)NULL)->uv)))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7307, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t(((uintptr_t)((size_t)(&((ImDrawVert *)NULL)->uv)))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7312, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "imgui/core.pyx":7306
+  /* "imgui/core.pyx":7311
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).pos
  * 
  * def _py_vertex_buffer_vertex_uv_offset():             # <<<<<<<<<<<<<<
@@ -58130,7 +58182,7 @@ static PyObject *__pyx_pf_5imgui_4core_426_py_vertex_buffer_vertex_uv_offset(CYT
   return __pyx_r;
 }
 
-/* "imgui/core.pyx":7309
+/* "imgui/core.pyx":7314
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).uv
  * 
  * def _py_vertex_buffer_vertex_col_offset():             # <<<<<<<<<<<<<<
@@ -58160,24 +58212,24 @@ static PyObject *__pyx_pf_5imgui_4core_428_py_vertex_buffer_vertex_col_offset(CY
   PyObject *__pyx_t_1 = NULL;
   __Pyx_TraceFrameInit(__pyx_codeobj__247)
   __Pyx_RefNannySetupContext("_py_vertex_buffer_vertex_col_offset", 0);
-  __Pyx_TraceCall("_py_vertex_buffer_vertex_col_offset", __pyx_f[0], 7309, 0, __PYX_ERR(0, 7309, __pyx_L1_error));
+  __Pyx_TraceCall("_py_vertex_buffer_vertex_col_offset", __pyx_f[0], 7314, 0, __PYX_ERR(0, 7314, __pyx_L1_error));
 
-  /* "imgui/core.pyx":7310
+  /* "imgui/core.pyx":7315
  * 
  * def _py_vertex_buffer_vertex_col_offset():
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).col             # <<<<<<<<<<<<<<
  * 
  * def _py_vertex_buffer_vertex_size():
  */
-  __Pyx_TraceLine(7310,0,__PYX_ERR(0, 7310, __pyx_L1_error))
+  __Pyx_TraceLine(7315,0,__PYX_ERR(0, 7315, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_FromSize_t(((uintptr_t)((size_t)(&((ImDrawVert *)NULL)->col)))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7310, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t(((uintptr_t)((size_t)(&((ImDrawVert *)NULL)->col)))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7315, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "imgui/core.pyx":7309
+  /* "imgui/core.pyx":7314
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).uv
  * 
  * def _py_vertex_buffer_vertex_col_offset():             # <<<<<<<<<<<<<<
@@ -58197,7 +58249,7 @@ static PyObject *__pyx_pf_5imgui_4core_428_py_vertex_buffer_vertex_col_offset(CY
   return __pyx_r;
 }
 
-/* "imgui/core.pyx":7312
+/* "imgui/core.pyx":7317
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).col
  * 
  * def _py_vertex_buffer_vertex_size():             # <<<<<<<<<<<<<<
@@ -58227,24 +58279,24 @@ static PyObject *__pyx_pf_5imgui_4core_430_py_vertex_buffer_vertex_size(CYTHON_U
   PyObject *__pyx_t_1 = NULL;
   __Pyx_TraceFrameInit(__pyx_codeobj__248)
   __Pyx_RefNannySetupContext("_py_vertex_buffer_vertex_size", 0);
-  __Pyx_TraceCall("_py_vertex_buffer_vertex_size", __pyx_f[0], 7312, 0, __PYX_ERR(0, 7312, __pyx_L1_error));
+  __Pyx_TraceCall("_py_vertex_buffer_vertex_size", __pyx_f[0], 7317, 0, __PYX_ERR(0, 7317, __pyx_L1_error));
 
-  /* "imgui/core.pyx":7313
+  /* "imgui/core.pyx":7318
  * 
  * def _py_vertex_buffer_vertex_size():
  *     return sizeof(cimgui.ImDrawVert)             # <<<<<<<<<<<<<<
  * 
  * def _py_index_buffer_index_size():
  */
-  __Pyx_TraceLine(7313,0,__PYX_ERR(0, 7313, __pyx_L1_error))
+  __Pyx_TraceLine(7318,0,__PYX_ERR(0, 7318, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_FromSize_t((sizeof(ImDrawVert))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7313, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t((sizeof(ImDrawVert))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7318, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "imgui/core.pyx":7312
+  /* "imgui/core.pyx":7317
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).col
  * 
  * def _py_vertex_buffer_vertex_size():             # <<<<<<<<<<<<<<
@@ -58264,7 +58316,7 @@ static PyObject *__pyx_pf_5imgui_4core_430_py_vertex_buffer_vertex_size(CYTHON_U
   return __pyx_r;
 }
 
-/* "imgui/core.pyx":7315
+/* "imgui/core.pyx":7320
  *     return sizeof(cimgui.ImDrawVert)
  * 
  * def _py_index_buffer_index_size():             # <<<<<<<<<<<<<<
@@ -58293,22 +58345,22 @@ static PyObject *__pyx_pf_5imgui_4core_432_py_index_buffer_index_size(CYTHON_UNU
   PyObject *__pyx_t_1 = NULL;
   __Pyx_TraceFrameInit(__pyx_codeobj__249)
   __Pyx_RefNannySetupContext("_py_index_buffer_index_size", 0);
-  __Pyx_TraceCall("_py_index_buffer_index_size", __pyx_f[0], 7315, 0, __PYX_ERR(0, 7315, __pyx_L1_error));
+  __Pyx_TraceCall("_py_index_buffer_index_size", __pyx_f[0], 7320, 0, __PYX_ERR(0, 7320, __pyx_L1_error));
 
-  /* "imgui/core.pyx":7316
+  /* "imgui/core.pyx":7321
  * 
  * def _py_index_buffer_index_size():
  *     return sizeof(cimgui.ImDrawIdx)             # <<<<<<<<<<<<<<
  */
-  __Pyx_TraceLine(7316,0,__PYX_ERR(0, 7316, __pyx_L1_error))
+  __Pyx_TraceLine(7321,0,__PYX_ERR(0, 7321, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_FromSize_t((sizeof(ImDrawIdx))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7316, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t((sizeof(ImDrawIdx))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7321, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "imgui/core.pyx":7315
+  /* "imgui/core.pyx":7320
  *     return sizeof(cimgui.ImDrawVert)
  * 
  * def _py_index_buffer_index_size():             # <<<<<<<<<<<<<<
@@ -76618,14 +76670,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__209);
   __Pyx_GIVEREF(__pyx_tuple__209);
 
-  /* "imgui/core.pyx":7182
- *         ctx._ptr = NULL
+  /* "imgui/core.pyx":7184
+ *         _io = None
  *     else:
  *         raise RuntimeError("Context invalid (None or destroyed)")             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_tuple__238 = PyTuple_Pack(1, __pyx_kp_s_Context_invalid_None_or_destroye); if (unlikely(!__pyx_tuple__238)) __PYX_ERR(0, 7182, __pyx_L1_error)
+  __pyx_tuple__238 = PyTuple_Pack(1, __pyx_kp_s_Context_invalid_None_or_destroye); if (unlikely(!__pyx_tuple__238)) __PYX_ERR(0, 7184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__238);
   __Pyx_GIVEREF(__pyx_tuple__238);
 
@@ -78864,121 +78916,121 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__384);
   __pyx_codeobj__237 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__384, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_destroy_context, 7169, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__237)) __PYX_ERR(0, 7169, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7185
+  /* "imgui/core.pyx":7187
  * 
  * 
  * def get_current_context():             # <<<<<<<<<<<<<<
  *     """GetCurrentContext
  * 
  */
-  __pyx_tuple__385 = PyTuple_Pack(1, __pyx_n_s_ptr); if (unlikely(!__pyx_tuple__385)) __PYX_ERR(0, 7185, __pyx_L1_error)
+  __pyx_tuple__385 = PyTuple_Pack(1, __pyx_n_s_ptr); if (unlikely(!__pyx_tuple__385)) __PYX_ERR(0, 7187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__385);
   __Pyx_GIVEREF(__pyx_tuple__385);
-  __pyx_codeobj__239 = (PyObject*)__Pyx_PyCode_New(0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__385, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_get_current_context, 7185, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__239)) __PYX_ERR(0, 7185, __pyx_L1_error)
+  __pyx_codeobj__239 = (PyObject*)__Pyx_PyCode_New(0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__385, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_get_current_context, 7187, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__239)) __PYX_ERR(0, 7187, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7197
+  /* "imgui/core.pyx":7199
  * 
  * 
  * def set_current_context(_ImGuiContext ctx):             # <<<<<<<<<<<<<<
  *     """SetCurrentContext
  * 
  */
-  __pyx_tuple__386 = PyTuple_Pack(1, __pyx_n_s_ctx); if (unlikely(!__pyx_tuple__386)) __PYX_ERR(0, 7197, __pyx_L1_error)
+  __pyx_tuple__386 = PyTuple_Pack(1, __pyx_n_s_ctx); if (unlikely(!__pyx_tuple__386)) __PYX_ERR(0, 7199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__386);
   __Pyx_GIVEREF(__pyx_tuple__386);
-  __pyx_codeobj__240 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__386, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_set_current_context, 7197, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__240)) __PYX_ERR(0, 7197, __pyx_L1_error)
+  __pyx_codeobj__240 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__386, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_set_current_context, 7199, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__240)) __PYX_ERR(0, 7199, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7220
+  /* "imgui/core.pyx":7225
  * 
  * @contextmanager
  * def _py_font(_Font font):             # <<<<<<<<<<<<<<
  *     """Use specified font in given context.
  * 
  */
-  __pyx_tuple__387 = PyTuple_Pack(1, __pyx_n_s_font); if (unlikely(!__pyx_tuple__387)) __PYX_ERR(0, 7220, __pyx_L1_error)
+  __pyx_tuple__387 = PyTuple_Pack(1, __pyx_n_s_font); if (unlikely(!__pyx_tuple__387)) __PYX_ERR(0, 7225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__387);
   __Pyx_GIVEREF(__pyx_tuple__387);
-  __pyx_codeobj__241 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__387, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_font, 7220, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__241)) __PYX_ERR(0, 7220, __pyx_L1_error)
+  __pyx_codeobj__241 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__387, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_font, 7225, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__241)) __PYX_ERR(0, 7225, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7252
+  /* "imgui/core.pyx":7257
  * 
  * @contextmanager
  * def _py_styled(cimgui.ImGuiStyleVar variable, value):             # <<<<<<<<<<<<<<
  *     # note: we treat bool value as integer to guess if we are required to pop
  *     #       anything because IMGUI may simply skip pushing
  */
-  __pyx_tuple__388 = PyTuple_Pack(3, __pyx_n_s_variable, __pyx_n_s_value, __pyx_n_s_count); if (unlikely(!__pyx_tuple__388)) __PYX_ERR(0, 7252, __pyx_L1_error)
+  __pyx_tuple__388 = PyTuple_Pack(3, __pyx_n_s_variable, __pyx_n_s_value, __pyx_n_s_count); if (unlikely(!__pyx_tuple__388)) __PYX_ERR(0, 7257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__388);
   __Pyx_GIVEREF(__pyx_tuple__388);
-  __pyx_codeobj__242 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__388, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_styled, 7252, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__242)) __PYX_ERR(0, 7252, __pyx_L1_error)
+  __pyx_codeobj__242 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__388, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_styled, 7257, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__242)) __PYX_ERR(0, 7257, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7261
+  /* "imgui/core.pyx":7266
  * 
  * @contextmanager
  * def _py_colored(             # <<<<<<<<<<<<<<
  *     cimgui.ImGuiCol variable,
  *     float r,
  */
-  __pyx_tuple__389 = PyTuple_Pack(6, __pyx_n_s_variable, __pyx_n_s_r, __pyx_n_s_g, __pyx_n_s_b, __pyx_n_s_a, __pyx_n_s_count); if (unlikely(!__pyx_tuple__389)) __PYX_ERR(0, 7261, __pyx_L1_error)
+  __pyx_tuple__389 = PyTuple_Pack(6, __pyx_n_s_variable, __pyx_n_s_r, __pyx_n_s_g, __pyx_n_s_b, __pyx_n_s_a, __pyx_n_s_count); if (unlikely(!__pyx_tuple__389)) __PYX_ERR(0, 7266, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__389);
   __Pyx_GIVEREF(__pyx_tuple__389);
-  __pyx_codeobj__243 = (PyObject*)__Pyx_PyCode_New(5, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__389, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_colored, 7261, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__243)) __PYX_ERR(0, 7261, __pyx_L1_error)
+  __pyx_codeobj__243 = (PyObject*)__Pyx_PyCode_New(5, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__389, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_colored, 7266, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__243)) __PYX_ERR(0, 7266, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7276
+  /* "imgui/core.pyx":7281
  * 
  * @contextmanager
  * def _py_istyled(*variables_and_values):             # <<<<<<<<<<<<<<
  *     # todo: rename to nstyled?
  *     count = 0
  */
-  __pyx_tuple__390 = PyTuple_Pack(5, __pyx_n_s_variables_and_values, __pyx_n_s_count, __pyx_n_s_iterator, __pyx_n_s_var, __pyx_n_s_val); if (unlikely(!__pyx_tuple__390)) __PYX_ERR(0, 7276, __pyx_L1_error)
+  __pyx_tuple__390 = PyTuple_Pack(5, __pyx_n_s_variables_and_values, __pyx_n_s_count, __pyx_n_s_iterator, __pyx_n_s_var, __pyx_n_s_val); if (unlikely(!__pyx_tuple__390)) __PYX_ERR(0, 7281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__390);
   __Pyx_GIVEREF(__pyx_tuple__390);
-  __pyx_codeobj__244 = (PyObject*)__Pyx_PyCode_New(0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__390, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_istyled, 7276, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__244)) __PYX_ERR(0, 7276, __pyx_L1_error)
+  __pyx_codeobj__244 = (PyObject*)__Pyx_PyCode_New(0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__390, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_istyled, 7281, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__244)) __PYX_ERR(0, 7281, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7303
+  /* "imgui/core.pyx":7308
  * 
  * 
  * def _py_vertex_buffer_vertex_pos_offset():             # <<<<<<<<<<<<<<
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).pos
  * 
  */
-  __pyx_codeobj__245 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_vertex_buffer_vertex_pos_off, 7303, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__245)) __PYX_ERR(0, 7303, __pyx_L1_error)
+  __pyx_codeobj__245 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_vertex_buffer_vertex_pos_off, 7308, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__245)) __PYX_ERR(0, 7308, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7306
+  /* "imgui/core.pyx":7311
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).pos
  * 
  * def _py_vertex_buffer_vertex_uv_offset():             # <<<<<<<<<<<<<<
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).uv
  * 
  */
-  __pyx_codeobj__246 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_vertex_buffer_vertex_uv_offs, 7306, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__246)) __PYX_ERR(0, 7306, __pyx_L1_error)
+  __pyx_codeobj__246 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_vertex_buffer_vertex_uv_offs, 7311, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__246)) __PYX_ERR(0, 7311, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7309
+  /* "imgui/core.pyx":7314
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).uv
  * 
  * def _py_vertex_buffer_vertex_col_offset():             # <<<<<<<<<<<<<<
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).col
  * 
  */
-  __pyx_codeobj__247 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_vertex_buffer_vertex_col_off, 7309, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__247)) __PYX_ERR(0, 7309, __pyx_L1_error)
+  __pyx_codeobj__247 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_vertex_buffer_vertex_col_off, 7314, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__247)) __PYX_ERR(0, 7314, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7312
+  /* "imgui/core.pyx":7317
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).col
  * 
  * def _py_vertex_buffer_vertex_size():             # <<<<<<<<<<<<<<
  *     return sizeof(cimgui.ImDrawVert)
  * 
  */
-  __pyx_codeobj__248 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_vertex_buffer_vertex_size, 7312, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__248)) __PYX_ERR(0, 7312, __pyx_L1_error)
+  __pyx_codeobj__248 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_vertex_buffer_vertex_size, 7317, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__248)) __PYX_ERR(0, 7317, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7315
+  /* "imgui/core.pyx":7320
  *     return sizeof(cimgui.ImDrawVert)
  * 
  * def _py_index_buffer_index_size():             # <<<<<<<<<<<<<<
  *     return sizeof(cimgui.ImDrawIdx)
  */
-  __pyx_codeobj__249 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_index_buffer_index_size, 7315, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__249)) __PYX_ERR(0, 7315, __pyx_L1_error)
+  __pyx_codeobj__249 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_imgui_core_pyx, __pyx_n_s_py_index_buffer_index_size, 7320, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__249)) __PYX_ERR(0, 7320, __pyx_L1_error)
 
   /* "View.MemoryView":286
  *         return self.name
@@ -79243,7 +79295,7 @@ static int __Pyx_modinit_type_init_code(void) {
   if (PyObject_SetAttr(__pyx_m, __pyx_n_s_IO, (PyObject *)&__pyx_type_5imgui_4core__IO) < 0) __PYX_ERR(0, 1411, __pyx_L1_error)
   if (__Pyx_setup_reduce((PyObject*)&__pyx_type_5imgui_4core__IO) < 0) __PYX_ERR(0, 1411, __pyx_L1_error)
   __pyx_ptype_5imgui_4core__IO = &__pyx_type_5imgui_4core__IO;
-  if (PyType_Ready(&__pyx_type_5imgui_4core___pyx_scope_struct___py_font) < 0) __PYX_ERR(0, 7220, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5imgui_4core___pyx_scope_struct___py_font) < 0) __PYX_ERR(0, 7225, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_5imgui_4core___pyx_scope_struct___py_font.tp_print = 0;
   #endif
@@ -79251,7 +79303,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_5imgui_4core___pyx_scope_struct___py_font.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_5imgui_4core___pyx_scope_struct___py_font = &__pyx_type_5imgui_4core___pyx_scope_struct___py_font;
-  if (PyType_Ready(&__pyx_type_5imgui_4core___pyx_scope_struct_1__py_styled) < 0) __PYX_ERR(0, 7252, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5imgui_4core___pyx_scope_struct_1__py_styled) < 0) __PYX_ERR(0, 7257, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_5imgui_4core___pyx_scope_struct_1__py_styled.tp_print = 0;
   #endif
@@ -79259,7 +79311,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_5imgui_4core___pyx_scope_struct_1__py_styled.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_5imgui_4core___pyx_scope_struct_1__py_styled = &__pyx_type_5imgui_4core___pyx_scope_struct_1__py_styled;
-  if (PyType_Ready(&__pyx_type_5imgui_4core___pyx_scope_struct_2__py_colored) < 0) __PYX_ERR(0, 7261, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5imgui_4core___pyx_scope_struct_2__py_colored) < 0) __PYX_ERR(0, 7266, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_5imgui_4core___pyx_scope_struct_2__py_colored.tp_print = 0;
   #endif
@@ -79267,7 +79319,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_5imgui_4core___pyx_scope_struct_2__py_colored.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_5imgui_4core___pyx_scope_struct_2__py_colored = &__pyx_type_5imgui_4core___pyx_scope_struct_2__py_colored;
-  if (PyType_Ready(&__pyx_type_5imgui_4core___pyx_scope_struct_3__py_istyled) < 0) __PYX_ERR(0, 7276, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5imgui_4core___pyx_scope_struct_3__py_istyled) < 0) __PYX_ERR(0, 7281, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_5imgui_4core___pyx_scope_struct_3__py_istyled.tp_print = 0;
   #endif
@@ -85476,52 +85528,52 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_destroy_context, __pyx_t_8) < 0) __PYX_ERR(0, 7169, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "imgui/core.pyx":7185
+  /* "imgui/core.pyx":7187
  * 
  * 
  * def get_current_context():             # <<<<<<<<<<<<<<
  *     """GetCurrentContext
  * 
  */
-  __Pyx_TraceLine(7185,0,__PYX_ERR(0, 7185, __pyx_L1_error))
-  __pyx_t_8 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_409get_current_context, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7185, __pyx_L1_error)
+  __Pyx_TraceLine(7187,0,__PYX_ERR(0, 7187, __pyx_L1_error))
+  __pyx_t_8 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_409get_current_context, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_current_context, __pyx_t_8) < 0) __PYX_ERR(0, 7185, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_current_context, __pyx_t_8) < 0) __PYX_ERR(0, 7187, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "imgui/core.pyx":7197
+  /* "imgui/core.pyx":7199
  * 
  * 
  * def set_current_context(_ImGuiContext ctx):             # <<<<<<<<<<<<<<
  *     """SetCurrentContext
  * 
  */
-  __Pyx_TraceLine(7197,0,__PYX_ERR(0, 7197, __pyx_L1_error))
-  __pyx_t_8 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_411set_current_context, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7197, __pyx_L1_error)
+  __Pyx_TraceLine(7199,0,__PYX_ERR(0, 7199, __pyx_L1_error))
+  __pyx_t_8 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_411set_current_context, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_current_context, __pyx_t_8) < 0) __PYX_ERR(0, 7197, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_current_context, __pyx_t_8) < 0) __PYX_ERR(0, 7199, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "imgui/core.pyx":7211
+  /* "imgui/core.pyx":7216
  * 
  * cdef public _ImGuiError "ImGuiError" = PyErr_NewException(
  *     "imgui.core.ImGuiError", Exception, {}             # <<<<<<<<<<<<<<
  * )
  * 
  */
-  __Pyx_TraceLine(7211,0,__PYX_ERR(0, 7211, __pyx_L1_error))
-  __pyx_t_8 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7211, __pyx_L1_error)
+  __Pyx_TraceLine(7216,0,__PYX_ERR(0, 7216, __pyx_L1_error))
+  __pyx_t_8 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
 
-  /* "imgui/core.pyx":7210
+  /* "imgui/core.pyx":7215
  * from cpython.exc cimport PyErr_NewException
  * 
  * cdef public _ImGuiError "ImGuiError" = PyErr_NewException(             # <<<<<<<<<<<<<<
  *     "imgui.core.ImGuiError", Exception, {}
  * )
  */
-  __Pyx_TraceLine(7210,0,__PYX_ERR(0, 7210, __pyx_L1_error))
-  __pyx_t_9 = PyErr_NewException(((char *)"imgui.core.ImGuiError"), ((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])), __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7210, __pyx_L1_error)
+  __Pyx_TraceLine(7215,0,__PYX_ERR(0, 7215, __pyx_L1_error))
+  __pyx_t_9 = PyErr_NewException(((char *)"imgui.core.ImGuiError"), ((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])), __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7215, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __Pyx_XGOTREF(ImGuiError);
@@ -85529,226 +85581,226 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_t_9);
   __pyx_t_9 = 0;
 
-  /* "imgui/core.pyx":7214
+  /* "imgui/core.pyx":7219
  * )
  * 
  * ImGuiError = _ImGuiError # make visible to Python             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __Pyx_TraceLine(7214,0,__PYX_ERR(0, 7214, __pyx_L1_error))
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_ImGuiError, ImGuiError) < 0) __PYX_ERR(0, 7214, __pyx_L1_error)
+  __Pyx_TraceLine(7219,0,__PYX_ERR(0, 7219, __pyx_L1_error))
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_ImGuiError, ImGuiError) < 0) __PYX_ERR(0, 7219, __pyx_L1_error)
 
-  /* "imgui/core.pyx":7219
+  /* "imgui/core.pyx":7224
  * # === Extra utilities ====
  * 
  * @contextmanager             # <<<<<<<<<<<<<<
  * def _py_font(_Font font):
  *     """Use specified font in given context.
  */
-  __Pyx_TraceLine(7219,0,__PYX_ERR(0, 7219, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_contextmanager); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7219, __pyx_L1_error)
+  __Pyx_TraceLine(7224,0,__PYX_ERR(0, 7224, __pyx_L1_error))
+  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_contextmanager); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
 
-  /* "imgui/core.pyx":7220
+  /* "imgui/core.pyx":7225
  * 
  * @contextmanager
  * def _py_font(_Font font):             # <<<<<<<<<<<<<<
  *     """Use specified font in given context.
  * 
  */
-  __Pyx_TraceLine(7220,0,__PYX_ERR(0, 7220, __pyx_L1_error))
-  __pyx_t_8 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_413_py_font, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7220, __pyx_L1_error)
+  __Pyx_TraceLine(7225,0,__PYX_ERR(0, 7225, __pyx_L1_error))
+  __pyx_t_8 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_413_py_font, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
 
-  /* "imgui/core.pyx":7219
+  /* "imgui/core.pyx":7224
  * # === Extra utilities ====
  * 
  * @contextmanager             # <<<<<<<<<<<<<<
  * def _py_font(_Font font):
  *     """Use specified font in given context.
  */
-  __Pyx_TraceLine(7219,0,__PYX_ERR(0, 7219, __pyx_L1_error))
-  __pyx_t_15 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 7219, __pyx_L1_error)
+  __Pyx_TraceLine(7224,0,__PYX_ERR(0, 7224, __pyx_L1_error))
+  __pyx_t_15 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 7224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_font, __pyx_t_15) < 0) __PYX_ERR(0, 7220, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_font, __pyx_t_15) < 0) __PYX_ERR(0, 7225, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
 
-  /* "imgui/core.pyx":7251
+  /* "imgui/core.pyx":7256
  * 
  * 
  * @contextmanager             # <<<<<<<<<<<<<<
  * def _py_styled(cimgui.ImGuiStyleVar variable, value):
  *     # note: we treat bool value as integer to guess if we are required to pop
  */
-  __Pyx_TraceLine(7251,0,__PYX_ERR(0, 7251, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_contextmanager); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 7251, __pyx_L1_error)
+  __Pyx_TraceLine(7256,0,__PYX_ERR(0, 7256, __pyx_L1_error))
+  __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_contextmanager); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 7256, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
 
-  /* "imgui/core.pyx":7252
+  /* "imgui/core.pyx":7257
  * 
  * @contextmanager
  * def _py_styled(cimgui.ImGuiStyleVar variable, value):             # <<<<<<<<<<<<<<
  *     # note: we treat bool value as integer to guess if we are required to pop
  *     #       anything because IMGUI may simply skip pushing
  */
-  __Pyx_TraceLine(7252,0,__PYX_ERR(0, 7252, __pyx_L1_error))
-  __pyx_t_8 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_416_py_styled, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7252, __pyx_L1_error)
+  __Pyx_TraceLine(7257,0,__PYX_ERR(0, 7257, __pyx_L1_error))
+  __pyx_t_8 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_416_py_styled, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
 
-  /* "imgui/core.pyx":7251
+  /* "imgui/core.pyx":7256
  * 
  * 
  * @contextmanager             # <<<<<<<<<<<<<<
  * def _py_styled(cimgui.ImGuiStyleVar variable, value):
  *     # note: we treat bool value as integer to guess if we are required to pop
  */
-  __Pyx_TraceLine(7251,0,__PYX_ERR(0, 7251, __pyx_L1_error))
-  __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7251, __pyx_L1_error)
+  __Pyx_TraceLine(7256,0,__PYX_ERR(0, 7256, __pyx_L1_error))
+  __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7256, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_styled, __pyx_t_9) < 0) __PYX_ERR(0, 7252, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_styled, __pyx_t_9) < 0) __PYX_ERR(0, 7257, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-  /* "imgui/core.pyx":7260
+  /* "imgui/core.pyx":7265
  * 
  * 
  * @contextmanager             # <<<<<<<<<<<<<<
  * def _py_colored(
  *     cimgui.ImGuiCol variable,
  */
-  __Pyx_TraceLine(7260,0,__PYX_ERR(0, 7260, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_contextmanager); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7260, __pyx_L1_error)
+  __Pyx_TraceLine(7265,0,__PYX_ERR(0, 7265, __pyx_L1_error))
+  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_contextmanager); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
 
-  /* "imgui/core.pyx":7261
+  /* "imgui/core.pyx":7266
  * 
  * @contextmanager
  * def _py_colored(             # <<<<<<<<<<<<<<
  *     cimgui.ImGuiCol variable,
  *     float r,
  */
-  __Pyx_TraceLine(7261,0,__PYX_ERR(0, 7261, __pyx_L1_error))
-  __pyx_t_8 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_419_py_colored, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7261, __pyx_L1_error)
+  __Pyx_TraceLine(7266,0,__PYX_ERR(0, 7266, __pyx_L1_error))
+  __pyx_t_8 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_419_py_colored, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7266, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
 
-  /* "imgui/core.pyx":7260
+  /* "imgui/core.pyx":7265
  * 
  * 
  * @contextmanager             # <<<<<<<<<<<<<<
  * def _py_colored(
  *     cimgui.ImGuiCol variable,
  */
-  __Pyx_TraceLine(7260,0,__PYX_ERR(0, 7260, __pyx_L1_error))
-  __pyx_t_15 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 7260, __pyx_L1_error)
+  __Pyx_TraceLine(7265,0,__PYX_ERR(0, 7265, __pyx_L1_error))
+  __pyx_t_15 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 7265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_colored, __pyx_t_15) < 0) __PYX_ERR(0, 7261, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_colored, __pyx_t_15) < 0) __PYX_ERR(0, 7266, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
 
-  /* "imgui/core.pyx":7275
+  /* "imgui/core.pyx":7280
  * 
  * 
  * @contextmanager             # <<<<<<<<<<<<<<
  * def _py_istyled(*variables_and_values):
  *     # todo: rename to nstyled?
  */
-  __Pyx_TraceLine(7275,0,__PYX_ERR(0, 7275, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_contextmanager); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 7275, __pyx_L1_error)
+  __Pyx_TraceLine(7280,0,__PYX_ERR(0, 7280, __pyx_L1_error))
+  __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_contextmanager); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 7280, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
 
-  /* "imgui/core.pyx":7276
+  /* "imgui/core.pyx":7281
  * 
  * @contextmanager
  * def _py_istyled(*variables_and_values):             # <<<<<<<<<<<<<<
  *     # todo: rename to nstyled?
  *     count = 0
  */
-  __Pyx_TraceLine(7276,0,__PYX_ERR(0, 7276, __pyx_L1_error))
-  __pyx_t_8 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_422_py_istyled, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7276, __pyx_L1_error)
+  __Pyx_TraceLine(7281,0,__PYX_ERR(0, 7281, __pyx_L1_error))
+  __pyx_t_8 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_422_py_istyled, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
 
-  /* "imgui/core.pyx":7275
+  /* "imgui/core.pyx":7280
  * 
  * 
  * @contextmanager             # <<<<<<<<<<<<<<
  * def _py_istyled(*variables_and_values):
  *     # todo: rename to nstyled?
  */
-  __Pyx_TraceLine(7275,0,__PYX_ERR(0, 7275, __pyx_L1_error))
-  __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7275, __pyx_L1_error)
+  __Pyx_TraceLine(7280,0,__PYX_ERR(0, 7280, __pyx_L1_error))
+  __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7280, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_istyled, __pyx_t_9) < 0) __PYX_ERR(0, 7276, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_istyled, __pyx_t_9) < 0) __PYX_ERR(0, 7281, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-  /* "imgui/core.pyx":7303
+  /* "imgui/core.pyx":7308
  * 
  * 
  * def _py_vertex_buffer_vertex_pos_offset():             # <<<<<<<<<<<<<<
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).pos
  * 
  */
-  __Pyx_TraceLine(7303,0,__PYX_ERR(0, 7303, __pyx_L1_error))
-  __pyx_t_9 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_425_py_vertex_buffer_vertex_pos_offset, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7303, __pyx_L1_error)
+  __Pyx_TraceLine(7308,0,__PYX_ERR(0, 7308, __pyx_L1_error))
+  __pyx_t_9 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_425_py_vertex_buffer_vertex_pos_offset, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7308, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_vertex_buffer_vertex_pos_off, __pyx_t_9) < 0) __PYX_ERR(0, 7303, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_vertex_buffer_vertex_pos_off, __pyx_t_9) < 0) __PYX_ERR(0, 7308, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-  /* "imgui/core.pyx":7306
+  /* "imgui/core.pyx":7311
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).pos
  * 
  * def _py_vertex_buffer_vertex_uv_offset():             # <<<<<<<<<<<<<<
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).uv
  * 
  */
-  __Pyx_TraceLine(7306,0,__PYX_ERR(0, 7306, __pyx_L1_error))
-  __pyx_t_9 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_427_py_vertex_buffer_vertex_uv_offset, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7306, __pyx_L1_error)
+  __Pyx_TraceLine(7311,0,__PYX_ERR(0, 7311, __pyx_L1_error))
+  __pyx_t_9 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_427_py_vertex_buffer_vertex_uv_offset, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7311, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_vertex_buffer_vertex_uv_offs, __pyx_t_9) < 0) __PYX_ERR(0, 7306, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_vertex_buffer_vertex_uv_offs, __pyx_t_9) < 0) __PYX_ERR(0, 7311, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-  /* "imgui/core.pyx":7309
+  /* "imgui/core.pyx":7314
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).uv
  * 
  * def _py_vertex_buffer_vertex_col_offset():             # <<<<<<<<<<<<<<
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).col
  * 
  */
-  __Pyx_TraceLine(7309,0,__PYX_ERR(0, 7309, __pyx_L1_error))
-  __pyx_t_9 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_429_py_vertex_buffer_vertex_col_offset, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7309, __pyx_L1_error)
+  __Pyx_TraceLine(7314,0,__PYX_ERR(0, 7314, __pyx_L1_error))
+  __pyx_t_9 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_429_py_vertex_buffer_vertex_col_offset, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7314, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_vertex_buffer_vertex_col_off, __pyx_t_9) < 0) __PYX_ERR(0, 7309, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_vertex_buffer_vertex_col_off, __pyx_t_9) < 0) __PYX_ERR(0, 7314, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-  /* "imgui/core.pyx":7312
+  /* "imgui/core.pyx":7317
  *     return <uintptr_t><size_t>&(<cimgui.ImDrawVert*>NULL).col
  * 
  * def _py_vertex_buffer_vertex_size():             # <<<<<<<<<<<<<<
  *     return sizeof(cimgui.ImDrawVert)
  * 
  */
-  __Pyx_TraceLine(7312,0,__PYX_ERR(0, 7312, __pyx_L1_error))
-  __pyx_t_9 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_431_py_vertex_buffer_vertex_size, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7312, __pyx_L1_error)
+  __Pyx_TraceLine(7317,0,__PYX_ERR(0, 7317, __pyx_L1_error))
+  __pyx_t_9 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_431_py_vertex_buffer_vertex_size, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7317, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_vertex_buffer_vertex_size, __pyx_t_9) < 0) __PYX_ERR(0, 7312, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_vertex_buffer_vertex_size, __pyx_t_9) < 0) __PYX_ERR(0, 7317, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-  /* "imgui/core.pyx":7315
+  /* "imgui/core.pyx":7320
  *     return sizeof(cimgui.ImDrawVert)
  * 
  * def _py_index_buffer_index_size():             # <<<<<<<<<<<<<<
  *     return sizeof(cimgui.ImDrawIdx)
  */
-  __Pyx_TraceLine(7315,0,__PYX_ERR(0, 7315, __pyx_L1_error))
-  __pyx_t_9 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_433_py_index_buffer_index_size, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7315, __pyx_L1_error)
+  __Pyx_TraceLine(7320,0,__PYX_ERR(0, 7320, __pyx_L1_error))
+  __pyx_t_9 = PyCFunction_NewEx(&__pyx_mdef_5imgui_4core_433_py_index_buffer_index_size, NULL, __pyx_n_s_imgui_core); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 7320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_index_buffer_index_size, __pyx_t_9) < 0) __PYX_ERR(0, 7315, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_index_buffer_index_size, __pyx_t_9) < 0) __PYX_ERR(0, 7320, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
   /* "imgui/core.pyx":1

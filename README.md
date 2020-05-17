@@ -20,6 +20,7 @@ This is a fork of https://github.com/swistakm/pyimgui, which contains the follow
 * Batch draw multiple polylines and filled polygons using NumPy arrays
 * System clipboard integration in the GLFW integration layer
 * Add the `_IO.ini_filename` setter & getter
+* Fix a crash on two ImGui contexts in one app, one afther another. The `_io` global wasn't refreshed properly on `destroy_content`.
 
 These are needed for https://github.com/potocpav/python-concur.
 
