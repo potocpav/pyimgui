@@ -1325,15 +1325,17 @@ cdef class _FontAtlas(object):
 
     def add_font_from_file_ttf(
         self, str filename, float size_pixels,
-        _StaticGlyphRanges glyph_ranges=None,
+        _StaticGlyphRanges glyph_ranges=None, merge=False,
     ):
         self._require_pointer()
         # note: cannot use cimgui.ImWchar here due to Cython bug
         # note: whole unicode
         cdef char* in_glyph_ranges
+        cdef cimgui.ImFontConfig config # copied internally, no need to allocate here
+        config.MergeMode = merge
 
         return _Font.from_ptr(self._ptr.AddFontFromFileTTF(
-            _bytes(filename), size_pixels,  NULL,
+            _bytes(filename), size_pixels, &config,
             glyph_ranges.ranges_ptr if glyph_ranges is not None else NULL
         ))
 
@@ -1370,6 +1372,17 @@ cdef class _FontAtlas(object):
     def get_glyph_ranges_latin(self):
         # note: this is a custom glyph range with full latin character set
         return _StaticGlyphRanges.from_ptr(_LATIN_ALL)
+
+    def custom_glyph_ranges(self, glyph_ranges):
+      assert isinstance(glyph_ranges, list)
+      assert len(glyph_ranges) and len(glyph_ranges) % 2 == 0, "glyph_ranges must have even length"
+      # Do not bother with deallocation
+      cdef cimgui.ImWchar *ptr = <cimgui.ImWchar *>malloc(len(glyph_ranges) + 1 * cython.sizeof(cimgui.ImWchar))
+      for i, v in enumerate(glyph_ranges):
+          assert isinstance(v, int), "glyph_ranges must contain integers"
+          ptr[i] = v
+      ptr[len(glyph_ranges)] = 0
+      return _StaticGlyphRanges.from_ptr(ptr)
 
     def get_tex_data_as_alpha8(self):
         self._require_pointer()

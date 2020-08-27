@@ -22,7 +22,7 @@ cdef extern from "imgui.h":
     ctypedef struct ImDrawVert
     ctypedef struct ImFont
     ctypedef struct ImFontAtlas
-    ctypedef struct ImFontConfig
+    # ctypedef struct ImFontConfig
     ctypedef struct ImColor
     ctypedef struct ImGuiIO
     ctypedef struct ImGuiOnceUponAFrame
@@ -301,7 +301,7 @@ cdef extern from "imgui.h":
         void            ScaleClipRects(const ImVec2&) except +  # ✓
 
     ctypedef struct ImFontConfig:
-        pass
+        bool            MergeMode  # ✓
 
     ctypedef struct ImFont:
         pass
