@@ -64,6 +64,7 @@ cdef extern from "imgui.h":
     ctypedef int ImGuiInputTextFlags
     ctypedef int ImGuiSelectableFlags
     ctypedef int ImGuiTreeNodeFlags
+    ctypedef int ImGuiSliderFlags
     ctypedef int ImGuiWindowFlags
     ctypedef int ImGuiDockNodeFlags
     ctypedef int (*ImGuiInputTextCallback)(ImGuiInputTextCallbackData *data);

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-VERSION = (1, 3, 6)  # PEP 386
+VERSION = (1, 3, 7)  # PEP 386
 __version__ = ".".join([str(x) for x in VERSION])
 
 from imgui.core import *  # noqa
@@ -195,6 +195,22 @@ TREE_NODE_BULLET = core.TREE_NODE_BULLET
 TREE_NODE_FRAME_PADDING = core.TREE_NODE_FRAME_PADDING
 #: Shortcut: ``imgui.TREE_NODE_FRAMED | imgui.TREE_NODE_NO_AUTO_OPEN_ON_LOG``.
 TREE_NODE_COLLAPSING_HEADER = core.TREE_NODE_COLLAPSING_HEADER
+
+# === Slider flag constants (redefines for autodoc)
+#: Default behaviorr
+SLIDER_NONE = core.SLIDER_NONE
+#:  Clamp value to min/max bounds when input manually with CTRL+Click.
+#: By default CTRL+Click allows going out of bounds.
+SLIDER_CLAMP_ON_INPUT = core.SLIDER_CLAMP_ON_INPUT
+#:  Make the widget logarithmic (linear otherwise). Consider using
+#: ImGuiSliderFlags_NoRoundToFormat with this if using a format-string
+#: with small amount of digits.
+SLIDER_LOGARITHMIC = core.SLIDER_LOGARITHMIC
+#:  Disable rounding underlying value to match precision of the display format
+#: string (e.g. %.3f values are rounded to those 3 digits)
+SLIDER_NO_ROUND_TO_FORMAT = core.SLIDER_NO_ROUND_TO_FORMAT
+#:  Disable CTRL+Click or Enter key allowing to input text directly into the widget
+SLIDER_NO_INPUT = core.SLIDER_NO_INPUT
 
 # === Color flag constants (redefines for autodoc)
 COLOR_TEXT = core.COLOR_TEXT

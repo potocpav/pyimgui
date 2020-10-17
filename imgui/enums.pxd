@@ -231,6 +231,13 @@ cdef extern from "imgui.h":
         ImGuiTreeNodeFlags_NavLeftJumpsBackHere # (WIP) Nav: left direction may move to this TreeNode() from any of its child (items submitted between TreeNode and TreePop)
         ImGuiTreeNodeFlags_CollapsingHeader     # ImGuiTreeNodeFlags_Framed | ImGuiTreeNodeFlags_NoAutoOpenOnLog
 
+    ctypedef enum ImGuiSliderFlags_:
+        ImGuiSliderFlags_None                   #
+        ImGuiSliderFlags_ClampOnInput           # Clamp value to min/max bounds when input manually with CTRL+Click. By default CTRL+Click allows going out of bounds.
+        ImGuiSliderFlags_Logarithmic            # Make the widget logarithmic (linear otherwise). Consider using ImGuiSliderFlags_NoRoundToFormat with this if using a format-string with small amount of digits.
+        ImGuiSliderFlags_NoRoundToFormat        # Disable rounding underlying value to match precision of the display format string (e.g. %.3f values are rounded to those 3 digits)
+        ImGuiSliderFlags_NoInput                # Disable CTRL+Click or Enter key allowing to input text directly into the widget
+
     ctypedef enum ImGuiSelectableFlags_:
         ImGuiSelectableFlags_DontClosePopups    # Clicking this don't close parent popup window
         ImGuiSelectableFlags_SpanAllColumns     # Selectable frame can span all columns (text will still fit in current column)

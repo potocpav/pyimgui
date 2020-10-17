@@ -12,6 +12,6 @@ Usage guide
    conditions
    window-flags
    treenode-flags
+   slider-flags
    selectable-flag
    inputtext-flags
-
