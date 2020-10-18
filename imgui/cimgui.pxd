@@ -41,7 +41,7 @@ cdef extern from "imgui.h":
     ctypedef void* ImTextureID
     ctypedef unsigned int ImU32
     ctypedef unsigned int ImGuiID
-    ctypedef unsigned short ImWchar
+    ctypedef unsigned int ImWchar
     ctypedef int ImGuiCol
     ctypedef int ImGuiDataType
     ctypedef int ImGuiDir

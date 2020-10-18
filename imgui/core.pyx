@@ -33,7 +33,7 @@ from cpython.version cimport PY_MAJOR_VERSION
 # todo: find a way to cimport this directly from imgui.h
 DEF TARGET_IMGUI_VERSION = (1, 65)
 
-cdef unsigned short* _LATIN_ALL = [0x0020, 0x024F , 0]
+cdef cimgui.ImWchar* _LATIN_ALL = [0x0020, 0x024F , 0]
 
 # ==== Condition enum redefines ====
 ALWAYS = enums.ImGuiCond_Always
